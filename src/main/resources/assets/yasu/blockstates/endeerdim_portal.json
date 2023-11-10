@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "axis=z": {
+      "model": "yasu:block/endeerdim_portal_ew"
+    },
+    "axis=x": {
+      "model": "yasu:block/endeerdim_portal_ns"
+    }
+  }
+}

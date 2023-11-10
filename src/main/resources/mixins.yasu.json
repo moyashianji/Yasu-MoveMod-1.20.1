@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.moyashi.yasu.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [],
+  "client": [
+    "CloakModelMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
