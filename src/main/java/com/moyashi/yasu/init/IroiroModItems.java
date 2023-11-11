@@ -24,4 +24,7 @@ public class IroiroModItems {
 	public static final RegistryObject<Item> MUSCLELEG = REGISTRY.register("muscleleg", () -> new MusclelegItem());
 	public static final RegistryObject<Item> SNEAKSPEED = REGISTRY.register("sneakspeed", () -> new SneakspeedItem());
 	public static final RegistryObject<Item> ENDEERDIM = REGISTRY.register("endeerdim", () -> new EndeerdimItem());
+	public static final RegistryObject<Item> ROCKET = REGISTRY.register("rocket", () -> new RocketItem());
+	public static final RegistryObject<Item> MPH = REGISTRY.register("mph", () -> new MphItem());
+
 }

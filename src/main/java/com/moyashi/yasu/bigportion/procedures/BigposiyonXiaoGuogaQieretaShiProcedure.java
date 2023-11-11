@@ -6,6 +6,7 @@ public class BigposiyonXiaoGuogaQieretaShiProcedure {
 	public static void execute() {
 
 		RESIZE = false;
+		System.out.println("ResizeOff");
 
 	}
 }

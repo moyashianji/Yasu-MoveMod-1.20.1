@@ -2,6 +2,10 @@
 package com.moyashi.yasu.item;
 
 import com.moyashi.yasu.client.model.Modeltest;
+import com.moyashi.yasu.config.MoneyLoad;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.client.extensions.common.IClientItemExtensions;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.api.distmarker.Dist;
@@ -24,6 +28,8 @@ import net.minecraft.client.Minecraft;
 import java.util.function.Consumer;
 import java.util.Map;
 import java.util.Collections;
+
+import static com.moyashi.yasu.config.MoneySave.onSave;
 
 public abstract class SyunsokuItem extends ArmorItem {
 	public SyunsokuItem(Type type, Properties properties) {
@@ -98,5 +104,17 @@ public abstract class SyunsokuItem extends ArmorItem {
 		public String getArmorTexture(ItemStack stack, Entity entity, EquipmentSlot slot, String type) {
 			return "yasu:textures/models/armor/syunsoku_layer_1.png";
 		}
+
+		@Override
+		public void onArmorTick(ItemStack itemstack, Level world, Player entity) {
+			if (entity.isSprinting()) {
+				MoneyLoad.Money += 10;
+				onSave();
+				System.out.println("Fast count: " + MoneyLoad.Money);
+				entity.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(2.0);
+
+			}
+		}
+
 	}
 }

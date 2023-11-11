@@ -15,9 +15,10 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 import static com.moyashi.yasu.config.MoneySave.onSave;
+import static com.moyashi.yasu.main.Reference.ENERGYFLAG;
+import static com.moyashi.yasu.main.Reference.WALKFLAG;
 
 public class EnergyDrink {
-    public static boolean flag = false;
     @SubscribeEvent
     public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
 
@@ -26,17 +27,10 @@ public class EnergyDrink {
             if (event.player.level().isClientSide) {
                 LocalPlayer player = (LocalPlayer) event.player;
                 ItemStack mainHandItem = event.player.getMainHandItem();
-                if (!mainHandItem.isEmpty() && mainHandItem.getItem() == Items.DIRT) {
 
-                    if (player.onGround() && (player.input.left || player.input.right || player.input.up || player.input.down)) {
-                        flag = true;
-                    } else {
-                        flag = false;
-                    }
-                }
             }
                 Player player = event.player;
-                if (flag == true) {
+                if (ENERGYFLAG == true) {
 
                     event.player.level().setBlock(player.blockPosition().below(), Blocks.VOID_AIR.defaultBlockState(), 2);
 
@@ -51,6 +45,9 @@ public class EnergyDrink {
 
                         player.onUpdateAbilities();
                     }
+                }else{
+
+
                 }
             }
 

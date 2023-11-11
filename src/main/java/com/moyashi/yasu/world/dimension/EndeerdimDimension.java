@@ -29,7 +29,7 @@ public class EndeerdimDimension {
 					return false;
 				}
 			};
-			event.register(new ResourceLocation("iroiro:endeerdim"), customEffect);
+			event.register(new ResourceLocation("yasu:endeerdim"), customEffect);
 		}
 	}
 }

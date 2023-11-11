@@ -15,5 +15,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 
 public class BigModPotions {
 	public static final DeferredRegister<Potion> REGISTRY = DeferredRegister.create(ForgeRegistries.POTIONS, Reference.MOD_ID);
-	public static final RegistryObject<Potion> BIGPORTION = REGISTRY.register("bigportion", () -> new Potion(new MobEffectInstance(BigModMobEffects.BIG.get(), 3600, 0, false, true)));
+	public static final RegistryObject<Potion> BIGPORTION = REGISTRY.register("bigportion", () -> new Potion(new MobEffectInstance(BigModMobEffects.BIG.get(), 600, 0, false, true)));
+	public static final RegistryObject<Potion> ENERGY_DRINK = REGISTRY.register("energy_drink", () -> new Potion(new MobEffectInstance(BigModMobEffects.ENERGY_DRINK_EFFECT.get(), 600, 0, false, true)));
+
 }

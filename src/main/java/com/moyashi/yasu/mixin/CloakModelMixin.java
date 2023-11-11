@@ -18,17 +18,12 @@ import static com.moyashi.yasu.main.Reference.*;
 @Mixin(PlayerRenderer.class)
 public abstract class CloakModelMixin {
 
-
     @Inject(method = "scale", at = @At(value = "HEAD"))
     protected void rescale(AbstractClientPlayer p_117798_, PoseStack p_117799_, float p_117800_, CallbackInfo ci) {
         if (!(p_117798_ instanceof Player)) return;
-        if(RESIZE == true) {
             float f = 0.9375F;
-            p_117799_.scale(2.0F, 2.0F, 2.0F);
-        }else{
-            p_117799_.scale(1.0F, 1.0F, 1.0F);
+            p_117799_.scale(size, size, size);
 
-        }
     }
 
 }

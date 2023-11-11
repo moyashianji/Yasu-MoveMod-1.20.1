@@ -1,0 +1,9 @@
+{
+  "parent": "yasu:custom/quantum-converted",
+  "textures": {
+    "all": "yasu:block/jump",
+    "particle": "yasu:block/jump",
+    "0": "yasu:block/"
+  },
+  "render_type": "solid"
+}

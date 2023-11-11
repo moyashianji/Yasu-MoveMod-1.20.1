@@ -5,6 +5,7 @@
 package com.moyashi.yasu.bigportion.init;
 
 import com.moyashi.yasu.bigportion.potion.BigMobEffect;
+import com.moyashi.yasu.bigportion.potion.EnergyDrinkEffectMobEffect;
 import com.moyashi.yasu.main.Reference;
 import net.minecraftforge.registries.RegistryObject;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -17,4 +18,6 @@ import net.minecraft.world.effect.MobEffect;
 public class BigModMobEffects {
 	public static final DeferredRegister<MobEffect> REGISTRY = DeferredRegister.create(ForgeRegistries.MOB_EFFECTS, Reference.MOD_ID);
 	public static final RegistryObject<MobEffect> BIG = REGISTRY.register("big", () -> new BigMobEffect());
+	public static final RegistryObject<MobEffect> ENERGY_DRINK_EFFECT = REGISTRY.register("energy_drink_effect", () -> new EnergyDrinkEffectMobEffect());
+
 }

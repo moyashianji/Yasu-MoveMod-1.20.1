@@ -7,6 +7,8 @@ import com.moyashi.yasu.hud.TextHUD;
 import com.moyashi.yasu.init.IroiroModBlocks;
 import com.moyashi.yasu.init.IroiroModItems;
 import com.moyashi.yasu.init.IroiroModTabs;
+import com.moyashi.yasu.jumping.init.TrampModBlocks;
+import com.moyashi.yasu.jumping.init.TrampModItems;
 import net.minecraftforge.event.server.ServerStartedEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -33,14 +35,16 @@ public class Main {
         EnergyDrink.register();
         BigModMobEffects.REGISTRY.register(bus);
         BigModPotions.REGISTRY.register(bus);
-
         IroiroModBlocks.REGISTRY.register(bus);
-
         IroiroModItems.REGISTRY.register(bus);
-
         IroiroModTabs.REGISTRY.register(bus);
-
-
+        NetherTrav.register();
+        KeyNether.register();
+        TrampModItems.REGISTRY.register(bus);
+        TrampModBlocks.REGISTRY.register(bus);
+        JumpBoost.register();
+        mph.register();
+        SonicDash.register();
         bus.addListener(this::onClientSetup);
     }
 

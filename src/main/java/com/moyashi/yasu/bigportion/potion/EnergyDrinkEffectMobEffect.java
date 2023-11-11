@@ -1,45 +1,46 @@
 
 package com.moyashi.yasu.bigportion.potion;
 
-import com.moyashi.yasu.bigportion.procedures.BigposiyonXiaoGuogaQieretaShiProcedure;
 import com.moyashi.yasu.bigportion.procedures.BigposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure;
-import com.moyashi.yasu.main.Reference;
+import com.moyashi.yasu.bigportion.procedures.EnergyOffProcedure;
+import com.moyashi.yasu.bigportion.procedures.EnergyOnProcedure;
 import net.minecraft.world.entity.ai.attributes.AttributeMap;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffect;
+import com.moyashi.yasu.main.Reference;
 
-
-
-public class BigMobEffect extends MobEffect {
-	public BigMobEffect() {
+public class EnergyDrinkEffectMobEffect extends MobEffect {
+	public EnergyDrinkEffectMobEffect() {
 		super(MobEffectCategory.NEUTRAL, -1);
 	}
 
 	@Override
 	public String getDescriptionId() {
-		return "effect.big.big";
+		return "effect.big.energy_drink_effect";
 	}
 
 	@Override
 	public void addAttributeModifiers(LivingEntity entity, AttributeMap attributeMap, int amplifier) {
 		BigposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure.execute();
-		Reference.size = 2.0F;
+		Reference.ENERGYFLAG = true;
 	}
-
 	@Override
 	public void applyInstantenousEffect(Entity source, Entity indirectSource, LivingEntity entity, int amplifier, double health) {
-		BigposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure.execute();
-		Reference.size = 2.0F;
+		EnergyOnProcedure.execute();
+
+
+		System.out.println("addeneryg");
+
 	}
 
 	@Override
 	public void removeAttributeModifiers(LivingEntity entity, AttributeMap attributeMap, int amplifier) {
 		super.removeAttributeModifiers(entity, attributeMap, amplifier);
-		BigposiyonXiaoGuogaQieretaShiProcedure.execute();
-		Reference.size = 0.9375F;
-
+		EnergyOffProcedure.execute();
+		Reference.ENERGYFLAG = false;
+		System.out.println("removeener");
 	}
 
 	@Override

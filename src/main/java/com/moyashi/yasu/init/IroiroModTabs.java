@@ -4,6 +4,7 @@
  */
 package com.moyashi.yasu.init;
 
+import com.moyashi.yasu.jumping.init.TrampModItems;
 import com.moyashi.yasu.main.Reference;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.fml.common.Mod;
@@ -28,7 +29,17 @@ public class IroiroModTabs {
 			tabData.accept(IroiroModItems.SYUNSOKU_BOOTS.get());
 			tabData.accept(IroiroModItems.QUANTUM_CHESTPLATE.get());
 		}
+		if (tabData.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
+			tabData.accept(IroiroModItems.AVERAGEJUMP.get());
+			tabData.accept(IroiroModItems.MUSCLELEG.get());
+			tabData.accept(IroiroModItems.SNEAKSPEED.get());
+			tabData.accept(IroiroModItems.HUTUUHOKOU.get());
+			tabData.accept(IroiroModItems.ROCKET.get());
+			tabData.accept(TrampModItems.JUMPBOOST.get());
+			tabData.accept(IroiroModItems.MPH.get());
 
+
+		}
 		if (tabData.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
 			tabData.accept(IroiroModItems.ENDEERDIM.get());
 		}
