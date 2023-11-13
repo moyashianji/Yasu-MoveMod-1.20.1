@@ -1,0 +1,9 @@
+{
+  "parent": "yasu:custom/quantum_converted_converted-converted",
+  "textures": {
+    "all": "yasu:block/irasuto2",
+    "particle": "yasu:block/irasuto2",
+    "2": "yasu:block/irasuto2"
+  },
+  "render_type": "translucent"
+}

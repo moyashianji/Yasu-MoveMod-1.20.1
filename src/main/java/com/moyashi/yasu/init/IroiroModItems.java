@@ -26,5 +26,6 @@ public class IroiroModItems {
 	public static final RegistryObject<Item> ENDEERDIM = REGISTRY.register("endeerdim", () -> new EndeerdimItem());
 	public static final RegistryObject<Item> ROCKET = REGISTRY.register("rocket", () -> new RocketItem());
 	public static final RegistryObject<Item> MPH = REGISTRY.register("mph", () -> new MphItem());
+	public static final RegistryObject<Item> SONICDASH = REGISTRY.register("sonicdash", () -> new SonicdashItem());
 
 }

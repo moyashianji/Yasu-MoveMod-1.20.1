@@ -9,6 +9,12 @@ import com.moyashi.yasu.init.IroiroModItems;
 import com.moyashi.yasu.init.IroiroModTabs;
 import com.moyashi.yasu.jumping.init.TrampModBlocks;
 import com.moyashi.yasu.jumping.init.TrampModItems;
+import com.moyashi.yasu.particc.init.ParticcModParticleTypes;
+import com.moyashi.yasu.particc.init.ParticcModParticles;
+import com.moyashi.yasu.shop.ShopSystem;
+import com.moyashi.yasu.shop.init.ShopModBlocks;
+import com.moyashi.yasu.shop.init.ShopModItems;
+import com.moyashi.yasu.shop.init.ShopModTabs;
 import net.minecraftforge.event.server.ServerStartedEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -45,6 +51,13 @@ public class Main {
         JumpBoost.register();
         mph.register();
         SonicDash.register();
+        ShopModBlocks.REGISTRY.register(bus);
+        ShopModItems.REGISTRY.register(bus);
+        ShopModTabs.REGISTRY.register(bus);
+        ShopSystem.register();
+        ParticcModParticleTypes.REGISTRY.register(bus);
+        ShopModBlocks.ClientSideHandler.register();
+
         bus.addListener(this::onClientSetup);
     }
 
