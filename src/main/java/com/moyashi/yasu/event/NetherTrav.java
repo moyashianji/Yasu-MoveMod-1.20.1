@@ -13,6 +13,8 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.registries.ForgeRegistries;
 
+import static com.moyashi.yasu.main.Reference.MONEYPERBLOCK;
+
 public class NetherTrav {
     @SubscribeEvent
     public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
@@ -31,6 +33,7 @@ public class NetherTrav {
 
                     // プレイヤーの一マス下の座標を計算
                     BlockPos blockBelowPlayerPos = playerPos.below();
+
 
                     // 一マス下のブロックの状態を取得
                     BlockState blockBelowPlayerState = player.level().getBlockState(blockBelowPlayerPos);

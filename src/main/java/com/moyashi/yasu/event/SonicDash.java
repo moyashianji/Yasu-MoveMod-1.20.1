@@ -76,20 +76,23 @@ public class SonicDash {
 
             // サーバーサイドのみで実行されるコード
             if (!world.isClientSide) {
-                double playerX = player.getX();
-                double playerY = player.getY();
-                double playerZ = player.getZ();
+                if (event.player.getMainHandItem().getItem() == IroiroModItems.SONICDASH.get()) {
 
-                // 半径2マス以内にいるモブにダメージを与える
-                for (Entity entity : world.getEntities(player, player.getBoundingBox().inflate(RADIUS))) {
-                    if (entity instanceof LivingEntity && entity != player && !(entity instanceof Player)) {
+                    double playerX = player.getX();
+                    double playerY = player.getY();
+                    double playerZ = player.getZ();
 
-                        // プレイヤー自身やモンスター以外のエンティティに対してのみ適用
-                        LivingEntity livingEntity = (LivingEntity) entity;
-                        livingEntity.setHealth(0f);
+                    // 半径2マス以内にいるモブにダメージを与える
+                    for (Entity entity : world.getEntities(player, player.getBoundingBox().inflate(RADIUS))) {
+                        if (entity instanceof LivingEntity && entity != player && !(entity instanceof Player)) {
+
+                            // プレイヤー自身やモンスター以外のエンティティに対してのみ適用
+                            LivingEntity livingEntity = (LivingEntity) entity;
+                            livingEntity.setHealth(0f);
+                        }
                     }
-                }
 
+                }
             }
         }
     }

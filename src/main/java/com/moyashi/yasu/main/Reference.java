@@ -17,4 +17,5 @@ public class Reference {
 
     public static float size = 0.9375F;
 
+    public static int MONEYPERBLOCK = 1;
 }

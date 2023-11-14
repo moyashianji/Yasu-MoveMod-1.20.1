@@ -23,8 +23,9 @@ public class mph {
                     Vec3 motion = player.getDeltaMovement();
                     player.lerpMotion(motion.x, 0.1D, motion.z); // 上方向に浮上する速度を設定
                 }
-                player.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(3.0);
-
+                if(player.isSprinting()) {
+                    player.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(1.0);
+                }
             }
 
         }

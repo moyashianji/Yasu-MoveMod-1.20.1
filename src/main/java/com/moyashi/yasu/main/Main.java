@@ -1,5 +1,7 @@
 package com.moyashi.yasu.main;
 
+import com.moyashi.yasu.PerBlock.ChangePerMoney;
+import com.moyashi.yasu.PerBlock.PerSystem;
 import com.moyashi.yasu.bigportion.init.BigModMobEffects;
 import com.moyashi.yasu.bigportion.init.BigModPotions;
 import com.moyashi.yasu.event.*;
@@ -10,7 +12,6 @@ import com.moyashi.yasu.init.IroiroModTabs;
 import com.moyashi.yasu.jumping.init.TrampModBlocks;
 import com.moyashi.yasu.jumping.init.TrampModItems;
 import com.moyashi.yasu.particc.init.ParticcModParticleTypes;
-import com.moyashi.yasu.particc.init.ParticcModParticles;
 import com.moyashi.yasu.shop.ShopSystem;
 import com.moyashi.yasu.shop.init.ShopModBlocks;
 import com.moyashi.yasu.shop.init.ShopModItems;
@@ -22,7 +23,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.fml.loading.targets.FMLServerDevLaunchHandler;
 
 import static com.moyashi.yasu.config.Config.generateConfigFile;
 
@@ -57,6 +57,8 @@ public class Main {
         ShopSystem.register();
         ParticcModParticleTypes.REGISTRY.register(bus);
         ShopModBlocks.ClientSideHandler.register();
+        PerSystem.register();
+        ChangePerMoney.register();
 
         bus.addListener(this::onClientSetup);
     }
@@ -67,7 +69,6 @@ public class Main {
     @SubscribeEvent
     public static void onServerStarted(ServerStartedEvent event){
 
-        System.out.println("[NEKORUN]サーバーが起動しました");
         generateConfigFile();
     }
     private void onClientSetup(FMLClientSetupEvent event) {
