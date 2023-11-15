@@ -25,10 +25,14 @@ public class ChangePerMoney {
         ItemStack helmetStack = event.player.getItemBySlot(EquipmentSlot.HEAD);
 
         // ヘルメットが存在し、かつそのアイテムがダイヤモンドのヘルメットであればtrueを返す
-        if(!helmetStack.isEmpty() && helmetStack.getItem() == IroiroModItems.NETHERTRAVEL_HELMET.get()){
+        if(!helmetStack.isEmpty() && helmetStack.getItem() == IroiroModItems.NETHERTRAVEL_HELMET.get() && !(event.player.getMainHandItem().getItem() == IroiroModItems.MPH.get())){
             MONEYPERBLOCK = 16;
-        }else if(event.player.getMainHandItem().getItem() == IroiroModItems.MPH.get()){
+        }else if(event.player.getMainHandItem().getItem() == IroiroModItems.MPH.get() && !helmetStack.isEmpty() && !(helmetStack.getItem() == IroiroModItems.NETHERTRAVEL_HELMET.get())){
             MONEYPERBLOCK = 10000;
+
+        }else if(event.player.getMainHandItem().getItem() == IroiroModItems.MPH.get() && !helmetStack.isEmpty() && helmetStack.getItem() == IroiroModItems.NETHERTRAVEL_HELMET.get()){
+            MONEYPERBLOCK = 160000;
+
         }else{
             MONEYPERBLOCK = 1;
         }
