@@ -12,12 +12,12 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
+import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 import static com.moyashi.yasu.config.MoneySave.onSave;
-import static com.moyashi.yasu.main.Reference.MUSCLEFLAG;
-import static com.moyashi.yasu.main.Reference.WALKFLAG;
+import static com.moyashi.yasu.main.Reference.*;
 import static net.minecraft.world.damagesource.DamageTypes.FALL;
 
 public class MuscleLeg {
@@ -38,26 +38,19 @@ public class MuscleLeg {
     }
 
     @SubscribeEvent
-    public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
-        if (event.phase == TickEvent.Phase.START) {
-            if(event.player.level().isClientSide){
-                LocalPlayer player = (LocalPlayer) event.player;
+    public static void onJump(LivingEvent.LivingJumpEvent event) {
+        if(event.getEntity().level().isClientSide){
+            if(event.getEntity() instanceof Player) {
+                Vec3 motion = event.getEntity().getDeltaMovement();
+                if(MUSCLEFLAG == true) {
 
-                if (player.input.jumping) {
-                    if(MUSCLEFLAG == true) {
-                        System.out.println("MuscleJumping: ");
-                        Vec3 motion = player.getDeltaMovement();
-
-                        player.setDeltaMovement(motion.x, 1.0, motion.z); // バウンス処理
-
-
-
-                    }
+                    event.getEntity().setDeltaMovement(motion.x, 1.0, motion.z); // バウンス処理
                 }
+
             }
         }
+        // this handler will now happen after all other non-LOWEST priority handlers
     }
-
     @SubscribeEvent
     public static void onPlayerInteract(PlayerInteractEvent.RightClickItem event) {
         Player player = event.getEntity();

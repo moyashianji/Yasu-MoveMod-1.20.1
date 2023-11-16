@@ -29,21 +29,24 @@ public class NomalJump {
             if (event.getEntity() instanceof LocalPlayer) {
                 LocalPlayer player = (LocalPlayer) event.getEntity();
 
-                if(JUMPFLAG == false) {
-                    // プレイヤーがジャンプ中なら、モーションを変更してジャンプを無効にする
-                    if (player.input != null && player.input.jumping) {
-                        Vec3 motion = player.getDeltaMovement();
-                        // ここでモーションを変更する
-                        player.setDeltaMovement(motion.x, 0, motion.z);
-                        System.out.println("Not JUMP");
 
-                    }
-                }else{
-                    System.out.println("Ok JUMP");
-
-                }
             }
         }
+    }
+
+    @SubscribeEvent
+    public static void onJump(LivingEvent.LivingJumpEvent event) {
+         if(event.getEntity().level().isClientSide){
+             if(event.getEntity() instanceof Player) {
+                 Vec3 motion = event.getEntity().getDeltaMovement();
+                 if(JUMPFLAG == false) {
+
+                     event.getEntity().setDeltaMovement(motion.x, 0, motion.z);
+                 }
+
+             }
+         }
+        // this handler will now happen after all other non-LOWEST priority handlers
     }
     @SubscribeEvent
     public static void onPlayerInteract(PlayerInteractEvent.RightClickItem event) {
