@@ -14,6 +14,7 @@ public class Reference {
     public static boolean MUSCLEFLAG = false;
     public static boolean SNEAKFLAG = false;
     public static boolean ENERGYFLAG = false;
+    public static boolean SNEAKPUSHFLAG = false;
 
     public static float size = 0.9375F;
 

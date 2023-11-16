@@ -1,10 +1,12 @@
 package com.moyashi.yasu.event;
 
 import com.moyashi.yasu.config.MoneyLoad;
+import com.moyashi.yasu.init.IroiroModItems;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -15,8 +17,7 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 import static com.moyashi.yasu.config.MoneySave.onSave;
-import static com.moyashi.yasu.main.Reference.ENERGYFLAG;
-import static com.moyashi.yasu.main.Reference.WALKFLAG;
+import static com.moyashi.yasu.main.Reference.*;
 
 public class EnergyDrink {
     @SubscribeEvent
@@ -29,7 +30,10 @@ public class EnergyDrink {
                 ItemStack mainHandItem = event.player.getMainHandItem();
 
             }
-                Player player = event.player;
+            Player player = event.player;
+
+            if (!player.level().isClientSide) {
+
                 if (ENERGYFLAG == true) {
 
                     event.player.level().setBlock(player.blockPosition().below(), Blocks.VOID_AIR.defaultBlockState(), 2);
@@ -37,7 +41,7 @@ public class EnergyDrink {
                     if (player.isSprinting()) {
 
                         System.out.println("EnergyDrinkFaster: ");
-                        player.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(1.5);
+                        player.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(1.0);
 
                     } else {
 
@@ -46,8 +50,30 @@ public class EnergyDrink {
                         player.onUpdateAbilities();
                     }
                 }else{
+                    if(WALKFLAG == true) {
 
+                        if (SNEAKPUSHFLAG == false) {
+                            ItemStack helmetStack = player.getItemBySlot(EquipmentSlot.FEET);
 
+                            if (player.getMainHandItem().getItem() == IroiroModItems.MPH.get()) {
+                                System.out.println("MPHHHHH");
+                                System.out.println(player.getAttribute(Attributes.MOVEMENT_SPEED).getValue());
+                                player.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(2.0);
+                            } else if (player.getMainHandItem().getItem() == IroiroModItems.SONICDASH.get()) {
+                                player.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(1.5);
+                            } else if (helmetStack.getItem() == IroiroModItems.SYUNSOKU_BOOTS.get()) {
+                                System.out.println("しゅんそく");
+
+                                player.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.5);
+                            } else {
+                                player.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.1);
+                            }
+                        }else{
+
+                        }
+                    }
+
+                    }
                 }
             }
 

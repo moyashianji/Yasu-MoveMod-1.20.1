@@ -103,12 +103,15 @@ public class MphblockBlock extends Block implements SimpleWaterloggedBlock {
 		super.use(blockstate, world, pos, entity, hand, hit);
 
 		if(!entity.level().isClientSide) {
-			System.out.println("mph");
-			MoneyLoad.Money -= 1000000;
-			onSave();
-			ItemStack _setstack = new ItemStack(IroiroModItems.MPH.get());
-			_setstack.setCount(1);
-			ItemHandlerHelper.giveItemToPlayer(entity, _setstack);
+			if (MoneyLoad.Money > 1000000) {
+
+				System.out.println("mph");
+				MoneyLoad.Money -= 1000000;
+				onSave();
+				ItemStack _setstack = new ItemStack(IroiroModItems.MPH.get());
+				_setstack.setCount(1);
+				ItemHandlerHelper.giveItemToPlayer(entity, _setstack);
+			}
 		}
 		return InteractionResult.SUCCESS;
 	}

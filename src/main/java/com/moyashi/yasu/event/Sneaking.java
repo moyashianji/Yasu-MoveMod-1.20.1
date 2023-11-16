@@ -10,8 +10,7 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
-import static com.moyashi.yasu.main.Reference.SNEAKFLAG;
-import static com.moyashi.yasu.main.Reference.WALKFLAG;
+import static com.moyashi.yasu.main.Reference.*;
 
 public class Sneaking {
 
@@ -25,10 +24,15 @@ public class Sneaking {
                     if(SNEAKFLAG == true) {
                         // プレイヤーが歩いている間ずっと
                         // プレイヤーが歩いている場合
+                        SNEAKPUSHFLAG = true;
                         System.out.println("Sneaking");
-                        player.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(3.0);
+                        if(SNEAKPUSHFLAG == true) {
+                            player.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(1.0);
+                        }
                     }
 
+                }else{
+                    SNEAKPUSHFLAG = false;
                 }
             }
         }

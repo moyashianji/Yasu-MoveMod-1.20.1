@@ -59,16 +59,19 @@ public class EnergydrinkBlock extends Block {
 		super.use(blockstate, world, pos, entity, hand, hit);
 
 		if(!entity.level().isClientSide) {
-			System.out.println("energy");
-			MoneyLoad.Money -= 500;
-			onSave();
-			ItemStack potionStack = new ItemStack(Items.POTION);
 
-			// ポーションのエフェクトを設定（ヒーリング効果を追加）
-			PotionUtils.setPotion(potionStack, BigModPotions.ENERGY_DRINK.get());
+			if(MoneyLoad.Money > 500) {
+				System.out.println("energy");
+				MoneyLoad.Money -= 500;
+				onSave();
+				ItemStack potionStack = new ItemStack(Items.POTION);
 
-			// プレイヤーのインベントリにポーションアイテムを追加
-			entity.addItem(potionStack);
+				// ポーションのエフェクトを設定（ヒーリング効果を追加）
+				PotionUtils.setPotion(potionStack, BigModPotions.ENERGY_DRINK.get());
+
+				// プレイヤーのインベントリにポーションアイテムを追加
+				entity.addItem(potionStack);
+			}
 
 		}
 		return InteractionResult.SUCCESS;

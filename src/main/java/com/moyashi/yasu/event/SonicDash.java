@@ -35,7 +35,7 @@ public class SonicDash {
             if(!event.player.level().isClientSide) {
                 if(event.player.getMainHandItem().getItem() == IroiroModItems.SONICDASH.get()) {
                     spawnParticleSphere((Entity) event.player, (ServerLevel) event.player.level());
-                    event.player.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(2.0);
+                    //event.player.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(2.0);
 
                 }else{
                     event.player.setInvisible(false);

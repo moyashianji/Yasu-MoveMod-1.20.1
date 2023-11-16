@@ -51,12 +51,15 @@ public class SyunsokublockBlock extends Block {
 		super.use(blockstate, world, pos, entity, hand, hit);
 
 		if(!entity.level().isClientSide) {
-			System.out.println("syunsoku");
-			MoneyLoad.Money -= 10;
-			onSave();
-			ItemStack _setstack = new ItemStack(IroiroModItems.SYUNSOKU_BOOTS.get());
-			_setstack.setCount(1);
-			ItemHandlerHelper.giveItemToPlayer(entity, _setstack);
+			if (MoneyLoad.Money > 10) {
+
+				System.out.println("syunsoku");
+				MoneyLoad.Money -= 10;
+				onSave();
+				ItemStack _setstack = new ItemStack(IroiroModItems.SYUNSOKU_BOOTS.get());
+				_setstack.setCount(1);
+				ItemHandlerHelper.giveItemToPlayer(entity, _setstack);
+			}
 		}
 		return InteractionResult.SUCCESS;
 	}

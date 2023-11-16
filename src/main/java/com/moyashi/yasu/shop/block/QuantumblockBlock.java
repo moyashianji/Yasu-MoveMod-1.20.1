@@ -103,12 +103,15 @@ public class QuantumblockBlock extends Block implements SimpleWaterloggedBlock {
 		super.use(blockstate, world, pos, entity, hand, hit);
 
 		if(!entity.level().isClientSide) {
-			System.out.println("quantum");
-			MoneyLoad.Money -= 250000;
-			onSave();
-			ItemStack _setstack = new ItemStack(IroiroModItems.QUANTUM_CHESTPLATE.get());
-			_setstack.setCount(1);
-			ItemHandlerHelper.giveItemToPlayer(entity, _setstack);
+			if (MoneyLoad.Money > 250000) {
+
+				System.out.println("quantum");
+				MoneyLoad.Money -= 250000;
+				onSave();
+				ItemStack _setstack = new ItemStack(IroiroModItems.QUANTUM_CHESTPLATE.get());
+				_setstack.setCount(1);
+				ItemHandlerHelper.giveItemToPlayer(entity, _setstack);
+			}
 		}
 		return InteractionResult.SUCCESS;
 	}

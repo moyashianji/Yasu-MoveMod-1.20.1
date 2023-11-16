@@ -51,12 +51,15 @@ public class MukimukinoasiBlock extends Block {
 		super.use(blockstate, world, pos, entity, hand, hit);
 
 		if(!entity.level().isClientSide) {
-			System.out.println("mukimuki");
-			MoneyLoad.Money -= 100;
-			onSave();
-			ItemStack _setstack = new ItemStack(IroiroModItems.MUSCLELEG.get());
-			_setstack.setCount(1);
-			ItemHandlerHelper.giveItemToPlayer(entity, _setstack);
+			if (MoneyLoad.Money > 100) {
+
+				System.out.println("mukimuki");
+				MoneyLoad.Money -= 100;
+				onSave();
+				ItemStack _setstack = new ItemStack(IroiroModItems.MUSCLELEG.get());
+				_setstack.setCount(1);
+				ItemHandlerHelper.giveItemToPlayer(entity, _setstack);
+			}
 		}
 		return InteractionResult.SUCCESS;
 	}

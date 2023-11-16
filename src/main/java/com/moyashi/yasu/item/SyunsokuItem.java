@@ -111,7 +111,7 @@ public abstract class SyunsokuItem extends ArmorItem {
 				MoneyLoad.Money += 10;
 				onSave();
 				System.out.println("Fast count: " + MoneyLoad.Money);
-				entity.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(2.0);
+				//entity.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(2.0);
 
 			}
 		}

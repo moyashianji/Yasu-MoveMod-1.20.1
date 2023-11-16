@@ -34,7 +34,6 @@ public class NomalWalk {
                         System.out.println("Walk count: ");
                         player.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.0);
                     }else{
-                        player.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.1);
                     }
                 }
             }

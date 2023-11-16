@@ -106,16 +106,19 @@ public class OmegablockBlock extends Block implements SimpleWaterloggedBlock {
 		super.use(blockstate, world, pos, entity, hand, hit);
 
 		if(!entity.level().isClientSide) {
-			System.out.println("omega");
-			MoneyLoad.Money -= 10000;
-			onSave();
-			ItemStack potionStack = new ItemStack(Items.POTION);
+			if (MoneyLoad.Money > 10000) {
 
-			// ポーションのエフェクトを設定（ヒーリング効果を追加）
-			PotionUtils.setPotion(potionStack, BigModPotions.BIGPORTION.get());
+				System.out.println("omega");
+				MoneyLoad.Money -= 10000;
+				onSave();
+				ItemStack potionStack = new ItemStack(Items.POTION);
 
-			// プレイヤーのインベントリにポーションアイテムを追加
-			entity.addItem(potionStack);
+				// ポーションのエフェクトを設定（ヒーリング効果を追加）
+				PotionUtils.setPotion(potionStack, BigModPotions.BIGPORTION.get());
+
+				// プレイヤーのインベントリにポーションアイテムを追加
+				entity.addItem(potionStack);
+			}
 		}
 		return InteractionResult.SUCCESS;
 	}

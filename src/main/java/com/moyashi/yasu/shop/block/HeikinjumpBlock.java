@@ -103,12 +103,15 @@ public class HeikinjumpBlock extends Block implements SimpleWaterloggedBlock {
 		super.use(blockstate, world, pos, entity, hand, hit);
 
 		if(!entity.level().isClientSide) {
-			System.out.println("heikin");
-			MoneyLoad.Money -= 1;
-			onSave();
-			ItemStack _setstack = new ItemStack(IroiroModItems.AVERAGEJUMP.get());
-			_setstack.setCount(1);
-			ItemHandlerHelper.giveItemToPlayer(entity, _setstack);
+			if (MoneyLoad.Money > 1) {
+
+				System.out.println("heikin");
+				MoneyLoad.Money -= 1;
+				onSave();
+				ItemStack _setstack = new ItemStack(IroiroModItems.AVERAGEJUMP.get());
+				_setstack.setCount(1);
+				ItemHandlerHelper.giveItemToPlayer(entity, _setstack);
+			}
 		}
 		return InteractionResult.SUCCESS;
 	}
