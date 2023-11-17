@@ -38,6 +38,7 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 import static com.moyashi.yasu.config.Config.generateConfigFile;
+import static com.moyashi.yasu.config.MoneyLoad.extractDoubleFromTextFile;
 
 @Mod(Reference.MOD_ID)
 
@@ -75,7 +76,7 @@ public class Main {
         QuantumItem.register();
         KeybindModKeyMappings.register();
         KeyBind.register();
-
+        extractDoubleFromTextFile();
         bus.addListener(this::onClientSetup);
     }
 
@@ -84,6 +85,7 @@ public class Main {
     }
     @SubscribeEvent
     public static void onServerStarted(ServerStartedEvent event){
+        extractDoubleFromTextFile();
 
         generateConfigFile();
     }

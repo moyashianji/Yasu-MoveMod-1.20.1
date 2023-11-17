@@ -1,5 +1,6 @@
 package com.moyashi.yasu.event;
 
+import com.moyashi.yasu.config.MoneySave;
 import net.minecraft.client.Minecraft;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -10,14 +11,35 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import org.lwjgl.glfw.GLFW;
 
+import static com.moyashi.yasu.item.RocketItem.TARGET_DIMENSION_KEY;
+import static com.moyashi.yasu.main.Reference.*;
+
 public class KeyNether {
     public static boolean isInNether = false;
     @SubscribeEvent
     public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
         if (event.phase == TickEvent.Phase.END) {
+            if(event.player.level().dimension() == TARGET_DIMENSION_KEY) {
+                NewX = event.player.getX();
+                NewY = event.player.getY();
+                NewZ = event.player.getZ();
+                MoneySave.onSave();
+            }
+            if(event.player.level().dimension() == Level.OVERWORLD) {
+                OveX = event.player.getX();
+                OveY = event.player.getY();
+                OveZ = event.player.getZ();
+                MoneySave.onSave();
 
+            }
             if(event.player.level().dimension() == Level.NETHER){
                 isInNether = true;
+                NetX = event.player.getX();
+                NetY = event.player.getY();
+                NetZ = event.player.getZ();
+                MoneySave.onSave();
+
+
             }else{
                 isInNether = false;
             }
@@ -39,12 +61,12 @@ public class KeyNether {
             if (isInNether) {
                 // 元の世界に戻る
 
-                player.teleportTo(player.getServer().getLevel(Level.OVERWORLD), 100, 100, 100, player.getYRot(), player.getXRot());
+                player.teleportTo(player.getServer().getLevel(Level.OVERWORLD), OveX, OveY, OveZ, player.getYRot(), player.getXRot());
 
                 isInNether = false;
             } else {
                 // ネザーにテレポート
-                player.teleportTo(player.getServer().getLevel(Level.NETHER), 100, 100, 100, player.getYRot(), player.getXRot());
+                player.teleportTo(player.getServer().getLevel(Level.NETHER), NetX, NetY, NetZ, player.getYRot(), player.getXRot());
                 isInNether = true;
             }
         }

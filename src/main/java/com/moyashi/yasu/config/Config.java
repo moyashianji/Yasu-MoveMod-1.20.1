@@ -29,6 +29,16 @@ public class Config {
 
                 FileWriter writer = new FileWriter(configFile);
                 writer.write("0");
+                writer.write("\n" +"0");
+                writer.write("\n" +"100");
+                writer.write("\n" +"0");
+                writer.write("\n" +"0");
+                writer.write("\n" +"100");
+                writer.write("\n" +"0");
+                writer.write("\n" +"0");
+                writer.write("\n" +"100");
+                writer.write("\n" +"0");
+                writer.close();
 
             } catch (IOException e) {
 

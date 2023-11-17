@@ -5,9 +5,6 @@ public class Reference {
 
     //resize
     public static boolean RESIZE = false;
-    public static float FaceScale_X = 2.0f;
-    public static float FaceScale_Y = 2.0f;
-    public static float FaceScale_Z = 2.0f;
 
     public static boolean JUMPFLAG = false;
     public static boolean WALKFLAG = false;
@@ -19,4 +16,17 @@ public class Reference {
     public static float size = 0.9375F;
 
     public static int MONEYPERBLOCK = 1;
+
+    public static double NetX;
+    public static double NetY;
+    public static double NetZ;
+
+    public static double NewX;
+    public static double NewY;
+    public static double NewZ;
+
+    public static double OveX;
+    public static double OveY;
+    public static double OveZ;
+
 }

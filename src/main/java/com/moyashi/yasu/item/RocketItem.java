@@ -20,6 +20,8 @@ import net.minecraft.world.level.dimension.DimensionType;
 import net.minecraftforge.common.property.Properties;
 import com.moyashi.yasu.config.MoneyLoad;
 
+import static com.moyashi.yasu.main.Reference.*;
+
 public class RocketItem extends Item {
 
     public RocketItem() {
@@ -68,7 +70,7 @@ public class RocketItem extends Item {
         double y = 100;
         double z = 100;
         // プレイヤーを指定のディメンションにテレポート
-        player.teleportTo(player.getServer().getLevel(TARGET_DIMENSION_KEY), x, y, z, player.getYRot(), player.getXRot());
+        player.teleportTo(player.getServer().getLevel(TARGET_DIMENSION_KEY), NewX, NewY, NewZ, player.getYRot(), player.getXRot());
     }
     // 元の世界へのテレポート
     private void teleportToOverworld(ServerPlayer player) {
@@ -79,7 +81,7 @@ public class RocketItem extends Item {
         double y = 100;
         double z = 100;
         // プレイヤーを指定のディメンションにテレポート
-        player.teleportTo(player.getServer().getLevel(Level.OVERWORLD), x, y, z, player.getYRot(), player.getXRot());
+        player.teleportTo(player.getServer().getLevel(Level.OVERWORLD), OveX, OveY ,OveZ, player.getYRot(), player.getXRot());
     }
 
 }
