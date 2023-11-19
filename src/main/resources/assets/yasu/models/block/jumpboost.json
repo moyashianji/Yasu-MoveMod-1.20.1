@@ -3,7 +3,7 @@
   "textures": {
     "all": "yasu:block/jump",
     "particle": "yasu:block/jump",
-    "0": "yasu:block/"
+    "0": "yasu:block/jump"
   },
   "render_type": "solid"
 }

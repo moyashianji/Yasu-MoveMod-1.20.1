@@ -1,6 +1,7 @@
 
 package com.moyashi.yasu.item;
 
+import com.moyashi.yasu.client.model.Modelsyunsoku;
 import com.moyashi.yasu.client.model.Modeltest;
 import com.moyashi.yasu.config.MoneyLoad;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -32,15 +33,15 @@ import java.util.Collections;
 import static com.moyashi.yasu.config.MoneySave.onSave;
 
 public abstract class SyunsokuItem extends ArmorItem {
-	public SyunsokuItem(Type type, Properties properties) {
+	public SyunsokuItem(ArmorItem.Type type, Item.Properties properties) {
 		super(new ArmorMaterial() {
 			@Override
-			public int getDurabilityForType(Type type) {
+			public int getDurabilityForType(ArmorItem.Type type) {
 				return new int[]{13, 15, 16, 11}[type.getSlot().getIndex()] * 25;
 			}
 
 			@Override
-			public int getDefenseForType(Type type) {
+			public int getDefenseForType(ArmorItem.Type type) {
 				return new int[]{2, 5, 6, 2}[type.getSlot().getIndex()];
 			}
 
@@ -78,7 +79,7 @@ public abstract class SyunsokuItem extends ArmorItem {
 
 	public static class Boots extends SyunsokuItem {
 		public Boots() {
-			super(Type.BOOTS, new Properties());
+			super(ArmorItem.Type.BOOTS, new Item.Properties());
 		}
 
 		@Override
@@ -88,8 +89,8 @@ public abstract class SyunsokuItem extends ArmorItem {
 				@OnlyIn(Dist.CLIENT)
 				public HumanoidModel getHumanoidArmorModel(LivingEntity living, ItemStack stack, EquipmentSlot slot, HumanoidModel defaultModel) {
 					HumanoidModel armorModel = new HumanoidModel(new ModelPart(Collections.emptyList(),
-							Map.of("left_leg", new Modeltest(Minecraft.getInstance().getEntityModels().bakeLayer(Modeltest.LAYER_LOCATION)).bb_main, "right_leg",
-									new Modeltest(Minecraft.getInstance().getEntityModels().bakeLayer(Modeltest.LAYER_LOCATION)).bb_main, "head", new ModelPart(Collections.emptyList(), Collections.emptyMap()), "hat",
+							Map.of("left_leg", new Modelsyunsoku(Minecraft.getInstance().getEntityModels().bakeLayer(Modelsyunsoku.LAYER_LOCATION)).RightLeg, "right_leg",
+									new Modelsyunsoku(Minecraft.getInstance().getEntityModels().bakeLayer(Modelsyunsoku.LAYER_LOCATION)).RightLeg, "head", new ModelPart(Collections.emptyList(), Collections.emptyMap()), "hat",
 									new ModelPart(Collections.emptyList(), Collections.emptyMap()), "body", new ModelPart(Collections.emptyList(), Collections.emptyMap()), "right_arm", new ModelPart(Collections.emptyList(), Collections.emptyMap()),
 									"left_arm", new ModelPart(Collections.emptyList(), Collections.emptyMap()))));
 					armorModel.crouching = living.isShiftKeyDown();
@@ -102,8 +103,9 @@ public abstract class SyunsokuItem extends ArmorItem {
 
 		@Override
 		public String getArmorTexture(ItemStack stack, Entity entity, EquipmentSlot slot, String type) {
-			return "yasu:textures/models/armor/syunsoku_layer_1.png";
+			return "yasu:textures/models/armor/syunsoku__layer_1.png";
 		}
+
 
 		@Override
 		public void onArmorTick(ItemStack itemstack, Level world, Player entity) {

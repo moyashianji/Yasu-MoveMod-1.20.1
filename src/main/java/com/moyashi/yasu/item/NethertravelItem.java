@@ -71,7 +71,7 @@ public abstract class NethertravelItem extends ArmorItem {
 
 	public static class Helmet extends NethertravelItem {
 		public Helmet() {
-			super(Type.HELMET, new Properties());
+			super(ArmorItem.Type.HELMET, new Item.Properties());
 		}
 
 		@Override
@@ -80,7 +80,7 @@ public abstract class NethertravelItem extends ArmorItem {
 				@Override
 				public HumanoidModel getHumanoidArmorModel(LivingEntity living, ItemStack stack, EquipmentSlot slot, HumanoidModel defaultModel) {
 					HumanoidModel armorModel = new HumanoidModel(new ModelPart(Collections.emptyList(),
-							Map.of("head", new Modelnether(Minecraft.getInstance().getEntityModels().bakeLayer(Modelnether.LAYER_LOCATION)).bb_main, "hat", new ModelPart(Collections.emptyList(), Collections.emptyMap()), "body",
+							Map.of("head", new Modelnether(Minecraft.getInstance().getEntityModels().bakeLayer(Modelnether.LAYER_LOCATION)).Head, "hat", new ModelPart(Collections.emptyList(), Collections.emptyMap()), "body",
 									new ModelPart(Collections.emptyList(), Collections.emptyMap()), "right_arm", new ModelPart(Collections.emptyList(), Collections.emptyMap()), "left_arm",
 									new ModelPart(Collections.emptyList(), Collections.emptyMap()), "right_leg", new ModelPart(Collections.emptyList(), Collections.emptyMap()), "left_leg",
 									new ModelPart(Collections.emptyList(), Collections.emptyMap()))));
@@ -91,6 +91,8 @@ public abstract class NethertravelItem extends ArmorItem {
 				}
 			});
 		}
+
+
 
 		@Override
 		public String getArmorTexture(ItemStack stack, Entity entity, EquipmentSlot slot, String type) {

@@ -91,7 +91,7 @@ public abstract class QuantumItem extends ArmorItem {
 
 	public static class Chestplate extends QuantumItem {
 		public Chestplate() {
-			super(Type.CHESTPLATE, new Properties());
+			super(ArmorItem.Type.CHESTPLATE, new Item.Properties());
 		}
 
 		@Override
@@ -100,10 +100,10 @@ public abstract class QuantumItem extends ArmorItem {
 				@Override
 				@OnlyIn(Dist.CLIENT)
 				public HumanoidModel getHumanoidArmorModel(LivingEntity living, ItemStack stack, EquipmentSlot slot, HumanoidModel defaultModel) {
-					HumanoidModel armorModel = new HumanoidModel(new ModelPart(Collections.emptyList(), Map.of("body", new Modeltest(Minecraft.getInstance().getEntityModels().bakeLayer(Modeltest.LAYER_LOCATION)).bb_main, "left_arm",
-							new Modeltest(Minecraft.getInstance().getEntityModels().bakeLayer(Modeltest.LAYER_LOCATION)).bb_main, "right_arm", new Modeltest(Minecraft.getInstance().getEntityModels().bakeLayer(Modeltest.LAYER_LOCATION)).bb_main,
-							"head", new ModelPart(Collections.emptyList(), Collections.emptyMap()), "hat", new ModelPart(Collections.emptyList(), Collections.emptyMap()), "right_leg", new ModelPart(Collections.emptyList(), Collections.emptyMap()),
-							"left_leg", new ModelPart(Collections.emptyList(), Collections.emptyMap()))));
+					HumanoidModel armorModel = new HumanoidModel(new ModelPart(Collections.emptyList(), Map.of("body", new Modeltest(Minecraft.getInstance().getEntityModels().bakeLayer(Modeltest.LAYER_LOCATION)).Body,
+							"left_arm", new Modeltest(Minecraft.getInstance().getEntityModels().bakeLayer(Modeltest.LAYER_LOCATION)).bone, "right_arm",
+							new Modeltest(Minecraft.getInstance().getEntityModels().bakeLayer(Modeltest.LAYER_LOCATION)).bone, "head", new ModelPart(Collections.emptyList(), Collections.emptyMap()), "hat",
+							new ModelPart(Collections.emptyList(), Collections.emptyMap()), "right_leg", new ModelPart(Collections.emptyList(), Collections.emptyMap()), "left_leg", new ModelPart(Collections.emptyList(), Collections.emptyMap()))));
 					armorModel.crouching = living.isShiftKeyDown();
 					armorModel.riding = defaultModel.riding;
 					armorModel.young = living.isBaby();
@@ -111,6 +111,7 @@ public abstract class QuantumItem extends ArmorItem {
 				}
 			});
 		}
+
 
 		@Override
 		public String getArmorTexture(ItemStack stack, Entity entity, EquipmentSlot slot, String type) {

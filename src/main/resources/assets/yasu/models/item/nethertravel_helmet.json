@@ -1,6 +1,7 @@
 {
-  "parent": "item/generated",
+  "parent": "yasu:custom/netheritem",
   "textures": {
-    "layer0": "yasu:item/nether_head"
+    "1": "yasu:block/nezatoraberingusensa",
+    "particle": "yasu:item/netherr"
   }
 }

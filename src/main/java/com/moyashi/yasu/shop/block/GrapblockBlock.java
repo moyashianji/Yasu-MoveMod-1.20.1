@@ -1,7 +1,16 @@
 
 package com.moyashi.yasu.shop.block;
 
+import com.moyashi.yasu.config.MoneyLoad;
+import com.moyashi.yasu.init.IroiroModItems;
 import com.moyashi.yasu.shop.init.ShopModBlocks;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.client.event.RegisterColorHandlersEvent;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.api.distmarker.Dist;
@@ -29,8 +38,13 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 import net.minecraft.client.renderer.BiomeColors;
+import net.minecraftforge.items.ItemHandlerHelper;
+import net.minecraftforge.registries.ForgeRegistries;
+
 import java.util.List;
 import java.util.Collections;
+
+import static com.moyashi.yasu.config.MoneySave.onSave;
 
 public class GrapblockBlock extends Block implements SimpleWaterloggedBlock {
 	public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
@@ -86,7 +100,31 @@ public class GrapblockBlock extends Block implements SimpleWaterloggedBlock {
 			return dropsOriginal;
 		return Collections.singletonList(new ItemStack(this, 1));
 	}
+	@Override
+	public InteractionResult use(BlockState blockstate, Level world, BlockPos pos, Player entity, InteractionHand hand, BlockHitResult hit) {
+		super.use(blockstate, world, pos, entity, hand, hit);
 
+		if(!entity.level().isClientSide) {
+			if (MoneyLoad.Money > 15000) {
+
+				System.out.println("grappp");
+				MoneyLoad.Money -= 15000;
+				onSave();
+				/**ItemStack modItem = ForgeRegistries.ITEMS.getValue(new ResourceLocation("grapplemod:grapplinghook")).getDefaultInstance();
+				// アイテムに NBT タグがない場合は作成し、取得
+				CompoundTag compoundTag = modItem.getOrCreateTag();
+
+				// NBT タグに指定された値を設定
+				compoundTag.putDouble("throwspeed", 3.5);
+				compoundTag.putInt("maxlen", 60);
+				compoundTag.putBoolean("enderstaff", true);
+
+				modItem.setCount(1);
+				entity.addItem(modItem);**/
+			}
+		}
+		return InteractionResult.SUCCESS;
+	}
 	@OnlyIn(Dist.CLIENT)
 	public static void blockColorLoad(RegisterColorHandlersEvent.Block event) {
 		event.getBlockColors().register((bs, world, pos, index) -> {

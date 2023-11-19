@@ -8,6 +8,7 @@ import com.moyashi.yasu.event.*;
 import com.moyashi.yasu.hud.TextHUD;
 import com.moyashi.yasu.init.IroiroModBlocks;
 import com.moyashi.yasu.init.IroiroModItems;
+import com.moyashi.yasu.init.IroiroModModels;
 import com.moyashi.yasu.init.IroiroModTabs;
 import com.moyashi.yasu.item.QuantumItem;
 import com.moyashi.yasu.jumping.init.TrampModBlocks;
@@ -58,6 +59,7 @@ public class Main {
         IroiroModBlocks.REGISTRY.register(bus);
         IroiroModItems.REGISTRY.register(bus);
         IroiroModTabs.REGISTRY.register(bus);
+
         NetherTrav.register();
         KeyNether.register();
         TrampModItems.REGISTRY.register(bus);
@@ -77,6 +79,7 @@ public class Main {
         KeybindModKeyMappings.register();
         KeyBind.register();
         extractDoubleFromTextFile();
+        IroiroModModels.register();
         bus.addListener(this::onClientSetup);
     }
 

@@ -46,8 +46,7 @@ public class TextHUD {
         RenderSystem.setShaderColor(1, 1, 1, 1);
         if (true) {
 
-            event.getGuiGraphics().blit( new ResourceLocation("yasu:textures/screens/ttt.png"), posX + -228, posY + 22, 0, 0, 300, 150, 300, 150);
-            event.getGuiGraphics().drawString(Minecraft.getInstance().font, ""+Money,  posX + -192, posY + 80, -1);
+            event.getGuiGraphics().drawString(Minecraft.getInstance().font, ""+Money,  posX + 149, posY + 88, -1);
 
         }
         RenderSystem.depthMask(true);

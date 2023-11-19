@@ -1,11 +1,30 @@
 {
-  "item.yasu.nethertravel_helmet": "Nethertravel ヘルメット",
-  "item.yasu.syunsoku_boots": "Syunsoku 個のブーツ",
-  "item.yasu.quantum_chestplate": "Quantum Chestplate",
-  "item.yasu.sneakspeed": "Sneakspeed",
-  "item.yasu.averagejump": "Averagejump",
-  "biome.yasu.endeer": "Endeer",
+  "item.yasu.nethertravel_helmet": "ネザートラベリングセンサー",
+  "item.yasu.syunsoku_boots": "瞬足",
+  "item.yasu.quantum_chestplate": "クォンタムグライダー",
+  "item.yasu.sneakspeed": "スニークスピード",
+  "item.yasu.averagejump": " 平均的なジャンプ",
+  "biome.yasu.endeer": "新ディメンジョン",
   "item.yasu.endeerdim": "Endeerdim Portal Igniter",
-  "item.yasu.muscleleg": "Muscleleg",
-  "item.yasu.hutuuhokou": "Hutuuhokou"
+  "item.yasu.muscleleg": "ムッキムキの脚",
+  "item.yasu.hutuuhokou": "ふつうの歩行",
+  "item.yasu.rocket": "ロケットシップ",
+  "item.yasu.mph": "10000000MPH",
+  "item.yasu.sonicdash": "ソニックダッシュ",
+
+  "block.yasu.jumpboost": "ブーストパット",
+
+
+
+  "item.minecraft.tipped_arrow.effect.bigportion": "オメガポーション",
+  "item.minecraft.lingering_potion.effect.bigportion": "オメガポーション",
+  "item.minecraft.splash_potion.effect.bigportion": "オメガポーション",
+  "effect.yasu.ssssss": "オメガポーション",
+  "item.minecraft.potion.effect.bigportion": "オメガポーション",
+
+  "item.minecraft.tipped_arrow.effect.energy_drink": "超エナジードリンク",
+  "item.minecraft.lingering_potion.effect.energy_drink": "超エナジードリンク",
+  "item.minecraft.splash_potion.effect.energy_drink": "超エナジードリンク",
+  "item.minecraft.potion.effect.energy_drink": "超エナジードリンク"
+
 }

@@ -18,7 +18,7 @@ import static com.moyashi.yasu.main.Reference.*;
 @Mixin(PlayerRenderer.class)
 public abstract class CloakModelMixin {
 
-    @Inject(method = "scale", at = @At(value = "HEAD"))
+    @Inject(method = "scale(Lnet/minecraft/client/player/AbstractClientPlayer;Lcom/mojang/blaze3d/vertex/PoseStack;F)V", at = @At(value = "HEAD"))
     protected void rescale(AbstractClientPlayer p_117798_, PoseStack p_117799_, float p_117800_, CallbackInfo ci) {
         if (!(p_117798_ instanceof Player)) return;
             float f = 0.9375F;

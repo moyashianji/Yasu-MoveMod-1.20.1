@@ -1,6 +1,7 @@
 {
-  "parent": "item/generated",
+  "parent": "yasu:custom/syunsoku",
   "textures": {
-    "layer0": "yasu:item/syunsoku_boots"
+    "0": "yasu:block/syunsoku_boots",
+    "particle": "yasu:item/syunsoku_boots"
   }
 }

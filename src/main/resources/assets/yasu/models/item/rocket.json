@@ -1,0 +1,7 @@
+{
+  "parent": "yasu:custom/quantum_converted_converted-converted",
+  "textures": {
+    "0": "yasu:block/roketutositupu",
+    "particle": "yasu:item/roketutositupu"
+  }
+}

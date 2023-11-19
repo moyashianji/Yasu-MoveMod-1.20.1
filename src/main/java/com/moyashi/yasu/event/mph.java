@@ -17,6 +17,7 @@ public class mph {
         if (event.getEntity() instanceof Player) {
             Player player = (Player) event.getEntity();
 
+            System.out.println(player.getMainHandItem().getItem().toString());
             if(player.getMainHandItem().getItem() == IroiroModItems.MPH.get()) {
                 if (player.isInWater()) {
                     System.out.println("water");
