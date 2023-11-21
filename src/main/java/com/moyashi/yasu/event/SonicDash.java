@@ -3,6 +3,7 @@ package com.moyashi.yasu.event;
 import com.moyashi.yasu.init.IroiroModItems;
 import com.moyashi.yasu.particc.init.ParticcModParticleTypes;
 import net.minecraft.client.Minecraft;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -22,11 +23,14 @@ import net.minecraft.world.entity.monster.Spider;
 import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.client.event.RenderHandEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-
+import com.moyashi.yasu.item.SonicdashItem;
 public class SonicDash {
 
     @SubscribeEvent
@@ -51,7 +55,7 @@ public class SonicDash {
             double playerX = entity.getX();
             double playerY = entity.getY();
             double playerZ = entity.getZ();
-
+            if(SonicdashItem.breaks && entity.onGround() && (((Player) entity).getMainHandItem().getItem() == IroiroModItems.SONICDASH.get())){
             // 球体上の各点にパーティクルを出現させる
             for (double theta = 0; theta <= 2 * Math.PI; theta += Math.PI / 26) {
                 for (double phi = 0; phi <= Math.PI; phi += Math.PI / 26) {
@@ -59,9 +63,33 @@ public class SonicDash {
                     double y = playerY + radius * Math.cos(phi);
                     double z = playerZ + radius * Math.sin(phi) * Math.sin(theta);
                     // パーティクルの出現
-                    entity.setInvisible(true);
                     level.sendParticles(ParticcModParticleTypes.ORISONIC.get(), x, y, z, 1, 0.0, 0.0, 0.0, 0.0);
                 }
+
+            }
+
+                // プレイヤーの周囲2ブロックの範囲を走査
+                for (int x = -1; x <= 1; x++) {
+                    for (int y = -1; y <= 1; y++) {
+                        for (int z = -1; z <= 1; z++) {
+                            double targetX = playerX + x;
+                            double targetY = playerY + y;
+                            double targetZ = playerZ + z;
+
+                            // プレイヤーより低いY座標のブロックはスキップ
+                            if (targetY < playerY) {
+                                continue;
+                            }
+
+                            // ブロックを破壊
+                            BlockPos targetPos = new BlockPos((int) targetX, (int) targetY, (int) targetZ);
+                            Block targetBlock = entity.level().getBlockState(targetPos).getBlock();
+                            entity.level().destroyBlock(new BlockHitResult(new Vec3(targetX, targetY, targetZ), entity.getDirection(), targetPos, false).getBlockPos(), true);
+
+                        }
+                    }
+                }
+
             }
         }
     }

@@ -14,6 +14,7 @@ public class Reference {
     public static boolean SNEAKPUSHFLAG = false;
 
     public static float size = 0.9375F;
+    public static float EYEHEIGH = 2.0f;
 
     public static int MONEYPERBLOCK = 1;
 

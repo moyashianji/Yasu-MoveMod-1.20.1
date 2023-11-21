@@ -25,6 +25,9 @@
   "item.minecraft.tipped_arrow.effect.energy_drink": "超エナジードリンク",
   "item.minecraft.lingering_potion.effect.energy_drink": "超エナジードリンク",
   "item.minecraft.splash_potion.effect.energy_drink": "超エナジードリンク",
-  "item.minecraft.potion.effect.energy_drink": "超エナジードリンク"
+  "item.minecraft.potion.effect.energy_drink": "超エナジードリンク",
+  "effect.yasu.bigportion": "オメガポーション",
+  "effect.big.big": "オメガポーション",
+  "effect.big.energy_drink_effect": "超エナジードリンク"
 
 }

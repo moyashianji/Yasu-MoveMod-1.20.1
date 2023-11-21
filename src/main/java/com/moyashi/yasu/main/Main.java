@@ -11,6 +11,7 @@ import com.moyashi.yasu.init.IroiroModItems;
 import com.moyashi.yasu.init.IroiroModModels;
 import com.moyashi.yasu.init.IroiroModTabs;
 import com.moyashi.yasu.item.QuantumItem;
+import com.moyashi.yasu.item.SonicdashItem;
 import com.moyashi.yasu.jumping.init.TrampModBlocks;
 import com.moyashi.yasu.jumping.init.TrampModItems;
 import com.moyashi.yasu.keybind.FlyupMessage;
@@ -80,6 +81,8 @@ public class Main {
         KeyBind.register();
         extractDoubleFromTextFile();
         IroiroModModels.register();
+
+        SonicdashItem.register();
         bus.addListener(this::onClientSetup);
     }
 
