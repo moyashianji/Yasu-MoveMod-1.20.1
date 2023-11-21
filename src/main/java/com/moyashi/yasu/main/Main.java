@@ -83,6 +83,7 @@ public class Main {
         IroiroModModels.register();
 
         SonicdashItem.register();
+        CoolDown.register();
         bus.addListener(this::onClientSetup);
     }
 

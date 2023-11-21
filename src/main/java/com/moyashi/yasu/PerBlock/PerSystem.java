@@ -10,6 +10,7 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 import static com.moyashi.yasu.config.MoneySave.onSave;
+import static com.moyashi.yasu.main.CoolDown.cooldown;
 import static com.moyashi.yasu.main.Reference.MONEYPERBLOCK;
 
 public class PerSystem {
@@ -36,13 +37,18 @@ public class PerSystem {
                     int ticksPerUpdate = Math.round(1.0f / (currentMovementSpeed * 2));
                     if (ticksPerUpdate > 0) {
                         if (event.player.tickCount % ticksPerUpdate == 0) {
-                            MoneyLoad.Money+=MONEYPERBLOCK;
-                            onSave();
+                            if(cooldown <=10) {
+                                MoneyLoad.Money += MONEYPERBLOCK;
+                                onSave();
 
+                            }
                         }
                     } else {
-                        MoneyLoad.Money+=MONEYPERBLOCK;
-                        onSave();
+                        if(cooldown <=10) {
+
+                            MoneyLoad.Money += MONEYPERBLOCK;
+                            onSave();
+                        }
                     }
                 }
             }
@@ -60,14 +66,20 @@ public class PerSystem {
                     System.out.println(ticksPerUpdate);
                     if (ticksPerUpdate > 0) {
                         if (event.player.tickCount % ticksPerUpdate == 0) {
-                            MoneyLoad.Money+=MONEYPERBLOCK;
-                            onSave();
+                            if(cooldown <=10) {
+
+                                MoneyLoad.Money += MONEYPERBLOCK;
+                                onSave();
+                            }
 
                         }
                     }
                     if(ticksPerUpdate == 0){
-                        MoneyLoad.Money+=MONEYPERBLOCK;
-                        onSave();
+                        if(cooldown <=10) {
+
+                            MoneyLoad.Money += MONEYPERBLOCK;
+                            onSave();
+                        }
                     }
                 }
             }
