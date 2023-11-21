@@ -1,6 +1,7 @@
 {
-  "parent": "item/generated",
+  "parent": "yasu:custom/sonicdashh",
   "textures": {
-    "layer0": "yasu:item/sonicdash"
+    "0": "yasu:block/sonicc",
+    "particle": "yasu:item/sonicc"
   }
 }

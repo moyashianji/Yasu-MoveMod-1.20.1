@@ -25,13 +25,13 @@ public class BigMobEffect extends MobEffect {
 	@Override
 	public void addAttributeModifiers(LivingEntity entity, AttributeMap attributeMap, int amplifier) {
 		BigposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure.execute();
-		Reference.size = 2.0F;
+		Reference.size = 3.0F;
 	}
 
 	@Override
 	public void applyInstantenousEffect(Entity source, Entity indirectSource, LivingEntity entity, int amplifier, double health) {
 		BigposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure.execute();
-		Reference.size = 2.0F;
+		Reference.size = 3.0F;
 	}
 
 	@Override

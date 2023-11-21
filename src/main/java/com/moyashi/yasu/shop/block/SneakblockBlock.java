@@ -3,6 +3,8 @@ package com.moyashi.yasu.shop.block;
 
 import com.moyashi.yasu.config.MoneyLoad;
 import com.moyashi.yasu.init.IroiroModItems;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -21,6 +23,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.core.BlockPos;
 import net.minecraftforge.items.ItemHandlerHelper;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.List;
 import java.util.Collections;
@@ -52,6 +55,11 @@ public class SneakblockBlock extends Block {
 
 		if(!entity.level().isClientSide) {
 			if (MoneyLoad.Money > 250) {
+
+
+
+				world.playSound(null, new BlockPos(entity.getBlockX(), entity.getBlockY(), entity.getBlockZ()), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.player.levelup")),
+						SoundSource.NEUTRAL, 1, 1);
 
 				System.out.println("sneak");
 				MoneyLoad.Money -= 250;

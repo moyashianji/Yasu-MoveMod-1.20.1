@@ -29,7 +29,7 @@ public class NomalWalk {
             if(event.player.level().isClientSide){
                 LocalPlayer player = (LocalPlayer) event.player;
 
-                if (player.onGround() && (player.input.left || player.isSwimming() || player.input.right || player.input.up || player.input.down) && !(player.isSprinting())) {
+                if (player.onGround() && (player.input.left || player.isSwimming() || player.input.right || player.input.up || player.input.down) || player.isSprinting()) {
                     if(WALKFLAG == false) {
                         System.out.println("Walk count: ");
                         player.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.0);

@@ -6,8 +6,10 @@ import com.moyashi.yasu.client.model.Modeltest;
 import com.moyashi.yasu.event.NomalWalk;
 import com.moyashi.yasu.init.IroiroModItems;
 import com.moyashi.yasu.main.Reference;
+import com.moyashi.yasu.particc.init.ParticcModParticleTypes;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
@@ -126,7 +128,10 @@ public abstract class QuantumItem extends ArmorItem {
 
 	@Override
 	public boolean elytraFlightTick(ItemStack stack, net.minecraft.world.entity.LivingEntity entity, int flightTicks) {
+		entity.level().addParticle(ParticcModParticleTypes.ORISONIC.get(), entity.getX(), entity.getY()+0.3, entity.getZ(), 0, 1, 0);
+
 		if (!entity.level().isClientSide) {
+
 			int nextFlightTick = flightTicks + 1;
 			if (nextFlightTick % 10 == 0) {
 				if (nextFlightTick % 20 == 0) {

@@ -38,31 +38,31 @@ public class MoneyLoad {
                         Money = Integer.parseInt(line);
 
                     } else if (lineNumber == 2) {
-                        NetX = Integer.parseInt(line);
+                        NetX = Double.parseDouble(line);
                         System.out.println(NetX);
                     } else if (lineNumber == 3) {
-                        NetY = Integer.parseInt(line);
+                        NetY = Double.parseDouble(line);
                         System.out.println(NetY);
                     } else if (lineNumber == 4) {
-                        NetZ = Integer.parseInt(line);
+                        NetZ = Double.parseDouble(line);
                         System.out.println(NetZ);
                     } else if (lineNumber == 5) {
-                        NewX = Integer.parseInt(line);
+                        NewX = Double.parseDouble(line);
                         System.out.println(NewX);
                     } else if (lineNumber == 6) {
-                        NewY = Integer.parseInt(line);
+                        NewY = Double.parseDouble(line);
                         System.out.println(NewY);
                     } else if (lineNumber == 7) {
-                        NewZ = Integer.parseInt(line);
+                        NewZ = Double.parseDouble(line);
                         System.out.println(NewZ);
                     } else if (lineNumber == 8) {
-                        OveX = Integer.parseInt(line);
+                        OveX = Double.parseDouble(line);
                         System.out.println(OveX);
                     } else if (lineNumber == 9) {
-                        OveY = Integer.parseInt(line);
+                        OveY = Double.parseDouble(line);
                         System.out.println(OveY);
                     } else if (lineNumber == 10) {
-                        OveZ = Integer.parseInt(line);
+                        OveZ = Double.parseDouble(line);
                         System.out.println(OveZ);
                         break; // 最後の行を読み込んだらループを終了
                     }

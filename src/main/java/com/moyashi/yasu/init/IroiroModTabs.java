@@ -37,6 +37,8 @@ public class IroiroModTabs {
 			tabData.accept(IroiroModItems.ROCKET.get());
 			tabData.accept(TrampModItems.JUMPBOOST.get());
 			tabData.accept(IroiroModItems.MPH.get());
+			tabData.accept(IroiroModItems.SONICDASH.get());
+
 
 
 		}

@@ -1,5 +1,6 @@
 package com.moyashi.yasu.event;
 
+import com.moyashi.yasu.config.MoneyLoad;
 import com.moyashi.yasu.jumping.init.TrampModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.damagesource.DamageSource;
@@ -12,7 +13,11 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
+import static com.moyashi.yasu.config.MoneySave.onSave;
+
 public class JumpBoost {
+    private static int a = 0;
+    private static long lastTickTime = 0;
 
     @SubscribeEvent
     public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
@@ -31,7 +36,17 @@ public class JumpBoost {
 
                 Vec3 motion = player.getDeltaMovement();
                 player.setDeltaMovement(motion.x, 2.0, motion.z); // バウンス処理
+
             }
+        if(!(player.onGround()) || player.isFallFlying() && !(player.isInWater())){
+            lastTickTime ++;
+            if (lastTickTime >= 10) {
+
+                lastTickTime =0;
+            MoneyLoad.Money += 1;
+                onSave();
+            }
+        }
         }
 
 

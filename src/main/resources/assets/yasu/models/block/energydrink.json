@@ -1,5 +1,5 @@
 {
-  "parent": "yasu:custom/quantum_converted_converted-converted",
+  "parent": "yasu:custom/showcase",
   "textures": {
     "all": "yasu:block/irasuto2",
     "particle": "yasu:block/irasuto2",

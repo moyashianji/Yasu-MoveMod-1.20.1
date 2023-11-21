@@ -7,6 +7,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -25,8 +26,11 @@ import static com.moyashi.yasu.main.Reference.*;
 public class RocketItem extends Item {
 
     public RocketItem() {
-        super(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON));
+        super(new Item.Properties().stacksTo(64).durability(2).rarity(Rarity.COMMON));
     }
+
+
+
     public static final ResourceKey<Level> TARGET_DIMENSION_KEY =
             ResourceKey.create(Registries.DIMENSION, new ResourceLocation("yasu:endeerdim")); // EndeeeerディメンションのResourceKey
 
@@ -42,6 +46,11 @@ public class RocketItem extends Item {
             if (!stack.hasTag()) {
                 stack.setTag(new CompoundTag());
             }
+            if (stack.hurt(1, RandomSource.create(), null)) {
+                stack.shrink(1);
+                stack.setDamageValue(0);
+            }
+
 
             CompoundTag nbt = stack.getTag();
 

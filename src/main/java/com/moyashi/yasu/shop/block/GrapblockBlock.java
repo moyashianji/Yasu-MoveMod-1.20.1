@@ -6,6 +6,7 @@ import com.moyashi.yasu.init.IroiroModItems;
 import com.moyashi.yasu.shop.init.ShopModBlocks;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -106,7 +107,8 @@ public class GrapblockBlock extends Block implements SimpleWaterloggedBlock {
 
 		if(!entity.level().isClientSide) {
 			if (MoneyLoad.Money > 15000) {
-
+				world.playSound(null, new BlockPos(entity.getBlockX(), entity.getBlockY(), entity.getBlockZ()), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.player.levelup")),
+						SoundSource.NEUTRAL, 1, 1);
 				System.out.println("grappp");
 				MoneyLoad.Money -= 15000;
 				onSave();

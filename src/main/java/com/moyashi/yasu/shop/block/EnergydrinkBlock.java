@@ -6,6 +6,8 @@ import com.moyashi.yasu.bigportion.init.BigModPotions;
 import com.moyashi.yasu.config.MoneyLoad;
 import com.moyashi.yasu.init.IroiroModItems;
 import com.moyashi.yasu.jumping.init.TrampModItems;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -29,6 +31,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.core.BlockPos;
 import net.minecraftforge.items.ItemHandlerHelper;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.List;
 import java.util.Collections;
@@ -61,6 +64,8 @@ public class EnergydrinkBlock extends Block {
 		if(!entity.level().isClientSide) {
 
 			if(MoneyLoad.Money > 500) {
+				world.playSound(null, new BlockPos(entity.getBlockX(), entity.getBlockY(), entity.getBlockZ()), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.player.levelup")),
+						SoundSource.NEUTRAL, 1, 1);
 				System.out.println("energy");
 				MoneyLoad.Money -= 500;
 				onSave();

@@ -36,9 +36,9 @@ public class EnergyDrink {
 
                 if (ENERGYFLAG == true) {
 
-                    event.player.level().setBlock(player.blockPosition().below(), Blocks.VOID_AIR.defaultBlockState(), 2);
 
                     if (player.isSprinting()) {
+                        event.player.level().setBlock(player.blockPosition().below(), Blocks.VOID_AIR.defaultBlockState(), 2);
 
                         System.out.println("EnergyDrinkFaster: ");
                         player.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(1.0);
@@ -60,7 +60,7 @@ public class EnergyDrink {
                                 System.out.println(player.getAttribute(Attributes.MOVEMENT_SPEED).getValue());
                                 player.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(2.0);
                             } else if (player.getMainHandItem().getItem() == IroiroModItems.SONICDASH.get()) {
-                                player.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(1.5);
+                                player.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(1.2);
                             } else if (helmetStack.getItem() == IroiroModItems.SYUNSOKU_BOOTS.get()) {
                                 System.out.println("しゅんそく");
 
