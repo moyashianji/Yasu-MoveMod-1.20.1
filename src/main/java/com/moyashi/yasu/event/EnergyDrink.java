@@ -33,8 +33,7 @@ public class EnergyDrink {
             Player player = event.player;
 
             if (!player.level().isClientSide) {
-                player.getAbilities().invulnerable = (false);
-                player.onUpdateAbilities();
+
                 if (ENERGYFLAG == true) {
 
 
@@ -42,7 +41,43 @@ public class EnergyDrink {
                         event.player.level().setBlock(player.blockPosition().below(), Blocks.VOID_AIR.defaultBlockState(), 2);
 
                         System.out.println("EnergyDrinkFaster: ");
-                        player.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(2.0);
+                        player.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(ENERSPEED);
+                        System.out.println("enerspeedd"+player.getAttribute(Attributes.MOVEMENT_SPEED).getValue());
+
+
+
+                    } else {
+
+                        player.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.1);
+
+                        player.onUpdateAbilities();
+                    }
+                }else if(BIGFLAG == true) {
+                    if (player.isSprinting()) {
+                        event.player.level().setBlock(player.blockPosition().below(), Blocks.VOID_AIR.defaultBlockState(), 2);
+
+                        System.out.println("EnergyDrinkFaster: ");
+                        player.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(BIGSPEED);
+                        System.out.println("enerspeedd"+player.getAttribute(Attributes.MOVEMENT_SPEED).getValue());
+
+
+
+                    } else {
+
+                        player.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.1);
+
+                        player.onUpdateAbilities();
+                    }
+
+                }else if(SONICFLAG == true) {
+                    if (player.isSprinting()) {
+                        event.player.level().setBlock(player.blockPosition().below(), Blocks.VOID_AIR.defaultBlockState(), 2);
+
+                        System.out.println("EnergyDrinkFaster: ");
+                        player.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(SONICSPEED);
+                        System.out.println("enerspeedd"+player.getAttribute(Attributes.MOVEMENT_SPEED).getValue());
+
+
 
                     } else {
 
@@ -51,6 +86,7 @@ public class EnergyDrink {
                         player.onUpdateAbilities();
                     }
                 }else{
+
                     if(WALKFLAG == true) {
 
                         if (SNEAKPUSHFLAG == false) {
@@ -59,13 +95,11 @@ public class EnergyDrink {
                             if (player.getMainHandItem().getItem() == IroiroModItems.MPH.get()) {
                                 System.out.println("MPHHHHH");
                                 System.out.println(player.getAttribute(Attributes.MOVEMENT_SPEED).getValue());
-                                player.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(2.0);
-                            } else if (player.getMainHandItem().getItem() == IroiroModItems.SONICDASH.get()) {
-                                player.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(1.2);
+                                player.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(MPHSPEED);
                             } else if (helmetStack.getItem() == IroiroModItems.SYUNSOKU_BOOTS.get()) {
                                 System.out.println("しゅんそく");
 
-                                player.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(1.0);
+                                player.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(SYUNSOKUSPEED);
                             } else {
                                 player.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.1);
                             }
@@ -73,10 +107,11 @@ public class EnergyDrink {
 
                         }
                     }
-
-                    }
                 }
+
+
             }
+        }
 
 
     }

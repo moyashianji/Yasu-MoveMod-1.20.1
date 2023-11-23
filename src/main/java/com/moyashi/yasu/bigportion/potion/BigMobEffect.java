@@ -23,6 +23,7 @@ import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
+import static com.moyashi.yasu.main.Reference.BIGFLAG;
 import static com.moyashi.yasu.main.Reference.EYEHEIGH;
 
 
@@ -41,8 +42,8 @@ public class BigMobEffect extends MobEffect {
 		BigposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure.execute();
 		Reference.size = 3.0F;
 		EYEHEIGH = 5.0f;
-		replaceBottleWithPotion((Player) entity);
-
+		checkAndReplaceBlock((Player) entity);
+		BIGFLAG = true;
 
 	}
 
@@ -51,26 +52,24 @@ public class BigMobEffect extends MobEffect {
 		BigposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure.execute();
 		Reference.size = 3.0F;
 		EYEHEIGH = 5.0f;
-		replaceBottleWithPotion((Player) entity);
+		checkAndReplaceBlock((Player) entity);
+		BIGFLAG = true;
 
 	}
-	public static void replaceBottleWithPotion(Player player) {
-		// インベントリを取得
-		Container inventory = player.getInventory();
-		// メインハンドのアイテムを取得
-		ItemStack mainHandItem = player.getMainHandItem();
+	private static void checkAndReplaceBlock(Player player) {
+		for (int slot = 0; slot < player.getInventory().getContainerSize(); slot++) {
+			ItemStack stackInSlot = player.getInventory().getItem(slot);
 
-		// メインハンドのアイテムがnullでなく、土以外のアイテムかどうかを確認
-		if (mainHandItem != null) {
-			System.out.println("potiooooooo");
-			// メインハンドのアイテムを土に置き換える
-			if(mainHandItem.getItem() == Items.GLASS_BOTTLE) {
+			// プレイヤーのインベントリのスロットが土ブロックであるかどうかを確認
+			if (!stackInSlot.isEmpty() && stackInSlot.getItem() == Items.GLASS_BOTTLE) {
+				// スロットが見つかったら、石ブロックに置き換える
+
 				ItemStack healingPotion = new ItemStack(Items.POTION);
 				healingPotion.getOrCreateTag().putString("Potion", "yasu:bigportion");
+				player.getInventory().setItem(slot,healingPotion);
 
 				// ポーションの効果を設定
-
-				player.setItemInHand(player.getUsedItemHand(), healingPotion);
+				break; // 一つだけ置き換えるため、処理を終了
 			}
 		}
 	}
@@ -89,7 +88,8 @@ public class BigMobEffect extends MobEffect {
 		BigposiyonXiaoGuogaQieretaShiProcedure.execute();
 		Reference.size = 0.9375F;
 		EYEHEIGH = 2.0f;
-
+		BIGFLAG = false;
+		checkAndReplaceBlock((Player) entity);
 
 	}
 

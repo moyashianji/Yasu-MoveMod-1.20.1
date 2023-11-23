@@ -4,6 +4,7 @@ import com.moyashi.yasu.PerBlock.ChangePerMoney;
 import com.moyashi.yasu.PerBlock.PerSystem;
 import com.moyashi.yasu.bigportion.init.BigModMobEffects;
 import com.moyashi.yasu.bigportion.init.BigModPotions;
+import com.moyashi.yasu.config.ConfigReload;
 import com.moyashi.yasu.event.*;
 import com.moyashi.yasu.hud.TextHUD;
 import com.moyashi.yasu.init.IroiroModBlocks;
@@ -19,6 +20,7 @@ import com.moyashi.yasu.keybind.KeyBind;
 import com.moyashi.yasu.keybind.init.KeybindModKeyMappings;
 import com.moyashi.yasu.particc.init.ParticcModParticleTypes;
 import com.moyashi.yasu.shop.ShopSystem;
+import com.moyashi.yasu.shop.command;
 import com.moyashi.yasu.shop.init.ShopModBlocks;
 import com.moyashi.yasu.shop.init.ShopModItems;
 import com.moyashi.yasu.shop.init.ShopModTabs;
@@ -41,6 +43,8 @@ import java.util.function.Supplier;
 
 import static com.moyashi.yasu.config.Config.generateConfigFile;
 import static com.moyashi.yasu.config.MoneyLoad.extractDoubleFromTextFile;
+import static com.moyashi.yasu.config.speed.Speed.SPgenerateConfigFile;
+import static com.moyashi.yasu.config.speed.SpeedLoad.SPextractDoubleFromTextFile;
 
 @Mod(Reference.MOD_ID)
 
@@ -60,7 +64,6 @@ public class Main {
         IroiroModBlocks.REGISTRY.register(bus);
         IroiroModItems.REGISTRY.register(bus);
         IroiroModTabs.REGISTRY.register(bus);
-
         NetherTrav.register();
         KeyNether.register();
         TrampModItems.REGISTRY.register(bus);
@@ -80,10 +83,13 @@ public class Main {
         KeybindModKeyMappings.register();
         KeyBind.register();
         extractDoubleFromTextFile();
+        SPextractDoubleFromTextFile();
+        SPgenerateConfigFile();
         IroiroModModels.register();
-
+        command.register();
         SonicdashItem.register();
         CoolDown.register();
+        ConfigReload.register();
         bus.addListener(this::onClientSetup);
     }
 
@@ -95,6 +101,10 @@ public class Main {
         extractDoubleFromTextFile();
 
         generateConfigFile();
+
+        SPextractDoubleFromTextFile();
+
+        SPgenerateConfigFile();
     }
     private void onClientSetup(FMLClientSetupEvent event) {
 

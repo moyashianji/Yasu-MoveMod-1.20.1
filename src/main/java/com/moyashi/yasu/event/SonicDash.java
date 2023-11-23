@@ -31,6 +31,9 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import com.moyashi.yasu.item.SonicdashItem;
+
+import static com.moyashi.yasu.main.Reference.SONICFLAG;
+
 public class SonicDash {
 
     @SubscribeEvent
@@ -89,7 +92,6 @@ public class SonicDash {
                         }
                     }
                 }
-
             }
         }
     }
@@ -105,21 +107,21 @@ public class SonicDash {
             // サーバーサイドのみで実行されるコード
             if (!world.isClientSide) {
                 if (event.player.getMainHandItem().getItem() == IroiroModItems.SONICDASH.get()) {
+                    if(SONICFLAG== true) {
+                        double playerX = player.getX();
+                        double playerY = player.getY();
+                        double playerZ = player.getZ();
 
-                    double playerX = player.getX();
-                    double playerY = player.getY();
-                    double playerZ = player.getZ();
+                        // 半径2マス以内にいるモブにダメージを与える
+                        for (Entity entity : world.getEntities(player, player.getBoundingBox().inflate(RADIUS))) {
+                            if (entity instanceof LivingEntity && entity != player && !(entity instanceof Player)) {
 
-                    // 半径2マス以内にいるモブにダメージを与える
-                    for (Entity entity : world.getEntities(player, player.getBoundingBox().inflate(RADIUS))) {
-                        if (entity instanceof LivingEntity && entity != player && !(entity instanceof Player)) {
-
-                            // プレイヤー自身やモンスター以外のエンティティに対してのみ適用
-                            LivingEntity livingEntity = (LivingEntity) entity;
-                            livingEntity.setHealth(0f);
+                                // プレイヤー自身やモンスター以外のエンティティに対してのみ適用
+                                LivingEntity livingEntity = (LivingEntity) entity;
+                                livingEntity.setHealth(0f);
+                            }
                         }
                     }
-
                 }
             }
         }

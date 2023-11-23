@@ -12,6 +12,8 @@ public class Reference {
     public static boolean SNEAKFLAG = false;
     public static boolean ENERGYFLAG = false;
     public static boolean SNEAKPUSHFLAG = false;
+    public static boolean SONICFLAG = false;
+    public static boolean BIGFLAG = false;
 
     public static float size = 0.9375F;
     public static float EYEHEIGH = 2.0f;
@@ -29,5 +31,15 @@ public class Reference {
     public static double OveX;
     public static double OveY;
     public static double OveZ;
+
+    /**
+     * SPEED一覧
+     */
+    public static double ENERSPEED;
+    public static double MPHSPEED;
+    public static double SYUNSOKUSPEED;
+    public static double BIGSPEED;
+    public static double SONICSPEED;
+
 
 }

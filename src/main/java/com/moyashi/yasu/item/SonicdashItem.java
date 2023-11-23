@@ -54,10 +54,13 @@ public class SonicdashItem extends Item {
 				breaks = false;
 
 				player.setInvisible(false);
+				SONICFLAG = false;
+
 
 			} else {
 				breaks = true;
 				player.setInvisible(true);
+				SONICFLAG = true;
 
 			}
 

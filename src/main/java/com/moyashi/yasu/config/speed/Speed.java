@@ -1,14 +1,14 @@
-package com.moyashi.yasu.config;
+package com.moyashi.yasu.config.speed;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class Config {
+public class Speed {
     public void Config(){
 
     }
-    public static void generateConfigFile(){
+    public static void SPgenerateConfigFile(){
         File modsFolder = new File("mods");
         File modFolder = new File(modsFolder, "yasu");
 
@@ -20,7 +20,7 @@ public class Config {
             System.out.println("Folder Created");
         }
 
-        File configFile = new File(modFolder, "config.txt");
+        File configFile = new File(modFolder, "speed.txt");
         System.out.println("Already Speed Created");
 
         if(!configFile.exists()){
@@ -28,16 +28,13 @@ public class Config {
                 configFile.createNewFile();
 
                 FileWriter writer = new FileWriter(configFile);
-                writer.write("0");
-                writer.write("\n" +"0");
-                writer.write("\n" +"100");
-                writer.write("\n" +"0");
-                writer.write("\n" +"0");
-                writer.write("\n" +"100");
-                writer.write("\n" +"0");
-                writer.write("\n" +"0");
-                writer.write("\n" +"100");
-                writer.write("\n" +"0");
+                writer.write("2.0");
+                writer.write("\n" +"2.0");
+                writer.write("\n" +"1.0");
+                writer.write("\n" +"3.0");
+                writer.write("\n" +"1.2");
+
+
                 writer.close();
 
             } catch (IOException e) {
