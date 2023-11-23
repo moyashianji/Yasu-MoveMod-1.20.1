@@ -19,6 +19,7 @@ import com.moyashi.yasu.keybind.FlyupMessage;
 import com.moyashi.yasu.keybind.KeyBind;
 import com.moyashi.yasu.keybind.init.KeybindModKeyMappings;
 import com.moyashi.yasu.particc.init.ParticcModParticleTypes;
+import com.moyashi.yasu.porrr.init.PorrrModItems;
 import com.moyashi.yasu.shop.ShopSystem;
 import com.moyashi.yasu.shop.command;
 import com.moyashi.yasu.shop.init.ShopModBlocks;
@@ -90,6 +91,7 @@ public class Main {
         SonicdashItem.register();
         CoolDown.register();
         ConfigReload.register();
+        PorrrModItems.REGISTRY.register(bus);
         bus.addListener(this::onClientSetup);
     }
 

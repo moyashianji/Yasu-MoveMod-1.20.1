@@ -6,6 +6,7 @@ package com.moyashi.yasu.init;
 
 import com.moyashi.yasu.jumping.init.TrampModItems;
 import com.moyashi.yasu.main.Reference;
+import com.moyashi.yasu.porrr.init.PorrrModItems;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -38,6 +39,8 @@ public class IroiroModTabs {
 			tabData.accept(TrampModItems.JUMPBOOST.get());
 			tabData.accept(IroiroModItems.MPH.get());
 			tabData.accept(IroiroModItems.SONICDASH.get());
+			tabData.accept(PorrrModItems.ENERGYDRINK.get());
+			tabData.accept(PorrrModItems.OMEGAPOTION.get());
 
 
 
