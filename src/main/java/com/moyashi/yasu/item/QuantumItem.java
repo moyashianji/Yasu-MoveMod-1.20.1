@@ -128,7 +128,7 @@ public abstract class QuantumItem extends ArmorItem {
 
 	@Override
 	public boolean elytraFlightTick(ItemStack stack, net.minecraft.world.entity.LivingEntity entity, int flightTicks) {
-		entity.level().addParticle(ParticcModParticleTypes.ORISONIC.get(), entity.getX(), entity.getY()+0.3, entity.getZ(), 0, 1, 0);
+		entity.level().addParticle(ParticleTypes.CLOUD, entity.getX(), entity.getY()+0.3, entity.getZ(), 0, 1, 0);
 
 		if (!entity.level().isClientSide) {
 

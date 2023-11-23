@@ -69,9 +69,9 @@ public class SonicDash {
             }
 
                 // プレイヤーの周囲2ブロックの範囲を走査
-                for (int x = -1; x <= 1; x++) {
-                    for (int y = -1; y <= 1; y++) {
-                        for (int z = -1; z <= 1; z++) {
+                for (int x = -2; x <= 2; x++) {
+                    for (int y = -2; y <= 2; y++) {
+                        for (int z = -2; z <= 2; z++) {
                             double targetX = playerX + x;
                             double targetY = playerY + y;
                             double targetZ = playerZ + z;

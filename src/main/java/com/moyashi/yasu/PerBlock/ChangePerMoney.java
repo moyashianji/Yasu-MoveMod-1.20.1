@@ -19,7 +19,7 @@ public class ChangePerMoney {
         if (event.phase != TickEvent.Phase.START) {
             return;
         }
-
+        System.out.println(MONEYPERBLOCK);
         // プレイヤーがダイヤモンドのヘルメットをかぶっているかどうかをチェック
 
         ItemStack helmetStack = event.player.getItemBySlot(EquipmentSlot.HEAD);
@@ -27,7 +27,7 @@ public class ChangePerMoney {
         // ヘルメットが存在し、かつそのアイテムがダイヤモンドのヘルメットであればtrueを返す
         if(!helmetStack.isEmpty() && helmetStack.getItem() == IroiroModItems.NETHERTRAVEL_HELMET.get() && !(event.player.getMainHandItem().getItem() == IroiroModItems.MPH.get())){
             MONEYPERBLOCK = 16;
-        }else if(event.player.getMainHandItem().getItem() == IroiroModItems.MPH.get() && !helmetStack.isEmpty() && !(helmetStack.getItem() == IroiroModItems.NETHERTRAVEL_HELMET.get())){
+        }else if(event.player.getMainHandItem().getItem() == IroiroModItems.MPH.get() && !(helmetStack.getItem() == IroiroModItems.NETHERTRAVEL_HELMET.get())){
             MONEYPERBLOCK = 10000;
 
         }else if(event.player.getMainHandItem().getItem() == IroiroModItems.MPH.get() && !helmetStack.isEmpty() && helmetStack.getItem() == IroiroModItems.NETHERTRAVEL_HELMET.get()){

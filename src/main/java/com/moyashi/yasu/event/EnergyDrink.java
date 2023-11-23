@@ -33,7 +33,8 @@ public class EnergyDrink {
             Player player = event.player;
 
             if (!player.level().isClientSide) {
-
+                player.getAbilities().invulnerable = (false);
+                player.onUpdateAbilities();
                 if (ENERGYFLAG == true) {
 
 
@@ -41,7 +42,7 @@ public class EnergyDrink {
                         event.player.level().setBlock(player.blockPosition().below(), Blocks.VOID_AIR.defaultBlockState(), 2);
 
                         System.out.println("EnergyDrinkFaster: ");
-                        player.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(1.0);
+                        player.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(2.0);
 
                     } else {
 
@@ -64,7 +65,7 @@ public class EnergyDrink {
                             } else if (helmetStack.getItem() == IroiroModItems.SYUNSOKU_BOOTS.get()) {
                                 System.out.println("しゅんそく");
 
-                                player.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.5);
+                                player.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(1.0);
                             } else {
                                 player.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.1);
                             }

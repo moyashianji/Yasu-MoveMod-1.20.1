@@ -13,6 +13,8 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
+import net.minecraftforge.event.entity.living.LivingFallEvent;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
@@ -21,17 +23,27 @@ import static com.moyashi.yasu.main.Reference.*;
 import static net.minecraft.world.damagesource.DamageTypes.FALL;
 
 public class MuscleLeg {
+
     @SubscribeEvent
-    public static void onLivingDamage(LivingDamageEvent event) {
+    public static void onLivingFall(LivingFallEvent event) {
+        // イベントがプレイヤーに関連しているか確認
         if (event.getEntity() instanceof Player) {
             Player player = (Player) event.getEntity();
-
             if(MUSCLEFLAG == true) {
-                // プレイヤーがダメージを受けた場合
-                if (event.getSource().is(FALL)) { // マグマからのダメージの場合（適切なダメージソースを指定）
-                    event.setCanceled(true); // ダメージを無効にする
-                    System.out.println("MuscleLeg");
+
+                // 落下ダメージを受けた場合
+                if (event.getDistance() > 3.0f) {
+                    // invulnerable を true に設定
+                    player.getAbilities().invulnerable = true;
                 } else {
+                    if(!player.isCreative()) {
+                        // 落下ダメージを受けていない場合は invulnerable を false に設定
+                        player.getAbilities().invulnerable = false;
+                    }
+                }
+            }else{
+                if(!player.isCreative()) {
+                    player.getAbilities().invulnerable = false;
                 }
             }
         }

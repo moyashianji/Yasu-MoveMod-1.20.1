@@ -14,6 +14,7 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 import static com.moyashi.yasu.config.MoneySave.onSave;
+import static com.moyashi.yasu.main.Reference.MONEYPERBLOCK;
 
 public class JumpBoost {
     private static int a = 0;
@@ -43,7 +44,7 @@ public class JumpBoost {
             if (lastTickTime >= 10) {
 
                 lastTickTime =0;
-            MoneyLoad.Money += 1;
+            MoneyLoad.Money += MONEYPERBLOCK;
                 onSave();
             }
         }
