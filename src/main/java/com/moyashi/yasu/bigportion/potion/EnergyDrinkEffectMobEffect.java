@@ -26,15 +26,11 @@ public class EnergyDrinkEffectMobEffect extends MobEffect {
 
 	@Override
 	public void addAttributeModifiers(LivingEntity entity, AttributeMap attributeMap, int amplifier) {
-		BigposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure.execute();
-		Reference.ENERGYFLAG = true;
+
 	}
 	@Override
 	public void applyInstantenousEffect(Entity source, Entity indirectSource, LivingEntity entity, int amplifier, double health) {
-		EnergyOnProcedure.execute();
 
-
-		System.out.println("addeneryg");
 
 	}
 	private static void checkAndReplaceBlock(Player player) {
@@ -57,10 +53,7 @@ public class EnergyDrinkEffectMobEffect extends MobEffect {
 	@Override
 	public void removeAttributeModifiers(LivingEntity entity, AttributeMap attributeMap, int amplifier) {
 		super.removeAttributeModifiers(entity, attributeMap, amplifier);
-		EnergyOffProcedure.execute();
-		Reference.ENERGYFLAG = false;
-		System.out.println("removeener");
-		checkAndReplaceBlock((Player) entity);
+
 	}
 
 	@Override

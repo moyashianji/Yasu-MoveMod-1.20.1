@@ -14,12 +14,32 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.core.BlockPos;
 
+import net.minecraftforge.common.util.ForgeSoundType;
+
+import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.core.BlockPos;
+import net.minecraftforge.registries.ForgeRegistries;
+
 import java.util.List;
 import java.util.Collections;
 
+
 public class JumpboostBlock extends Block {
 	public JumpboostBlock() {
-		super(Properties.of().instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.GRAVEL).strength(1f, 10f).noOcclusion().isRedstoneConductor((bs, br, bp) -> false));
+		super(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM)
+				.sound(new ForgeSoundType(1.0f, 1.0f, () -> ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.wool.break")), () -> ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.wool.step")),
+						() -> ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.wool.place")), () -> ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.wool.hit")),
+						() -> ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.wool.fall"))))
+				.strength(1f, 10f).noCollission().noOcclusion().isRedstoneConductor((bs, br, bp) -> false));
+
+
 	}
 
 	@Override

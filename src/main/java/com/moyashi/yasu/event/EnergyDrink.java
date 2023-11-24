@@ -54,7 +54,6 @@ public class EnergyDrink {
                     }
                 }else if(BIGFLAG == true) {
                     if (player.isSprinting()) {
-                        event.player.level().setBlock(player.blockPosition().below(), Blocks.VOID_AIR.defaultBlockState(), 2);
 
                         System.out.println("EnergyDrinkFaster: ");
                         player.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(BIGSPEED);
@@ -70,8 +69,9 @@ public class EnergyDrink {
                     }
 
                 }else if(SONICFLAG == true) {
+                    System.out.println("sojnnnnn: ");
+
                     if (player.isSprinting()) {
-                        event.player.level().setBlock(player.blockPosition().below(), Blocks.VOID_AIR.defaultBlockState(), 2);
 
                         System.out.println("EnergyDrinkFaster: ");
                         player.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(SONICSPEED);

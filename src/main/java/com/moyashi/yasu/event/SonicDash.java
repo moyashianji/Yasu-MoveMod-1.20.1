@@ -45,7 +45,6 @@ public class SonicDash {
                     //event.player.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(2.0);
 
                 }else{
-                    event.player.setInvisible(false);
                 }
             }
         }

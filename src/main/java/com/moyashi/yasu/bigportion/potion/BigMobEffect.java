@@ -39,21 +39,13 @@ public class BigMobEffect extends MobEffect {
 
 	@Override
 	public void addAttributeModifiers(LivingEntity entity, AttributeMap attributeMap, int amplifier) {
-		BigposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure.execute();
-		Reference.size = 3.0F;
-		EYEHEIGH = 5.0f;
-		checkAndReplaceBlock((Player) entity);
-		BIGFLAG = true;
+
 
 	}
 
 	@Override
 	public void applyInstantenousEffect(Entity source, Entity indirectSource, LivingEntity entity, int amplifier, double health) {
-		BigposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure.execute();
-		Reference.size = 3.0F;
-		EYEHEIGH = 5.0f;
-		checkAndReplaceBlock((Player) entity);
-		BIGFLAG = true;
+
 
 	}
 	private static void checkAndReplaceBlock(Player player) {
@@ -85,11 +77,6 @@ public class BigMobEffect extends MobEffect {
 	@Override
 	public void removeAttributeModifiers(LivingEntity entity, AttributeMap attributeMap, int amplifier) {
 		super.removeAttributeModifiers(entity, attributeMap, amplifier);
-		BigposiyonXiaoGuogaQieretaShiProcedure.execute();
-		Reference.size = 0.9375F;
-		EYEHEIGH = 2.0f;
-		BIGFLAG = false;
-		checkAndReplaceBlock((Player) entity);
 
 	}
 
