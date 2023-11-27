@@ -4,6 +4,7 @@
  */
 package com.moyashi.yasu.init;
 
+import com.moyashi.yasu.grappling.init.GrapplingModItems;
 import com.moyashi.yasu.jumping.init.TrampModItems;
 import com.moyashi.yasu.main.Reference;
 import com.moyashi.yasu.porrr.init.PorrrModItems;
@@ -41,7 +42,7 @@ public class IroiroModTabs {
 			tabData.accept(IroiroModItems.SONICDASH.get());
 			tabData.accept(PorrrModItems.ENERGYDRINK.get());
 			tabData.accept(PorrrModItems.OMEGAPOTION.get());
-
+			tabData.accept(GrapplingModItems.GRAPPLING_HOOK.get());
 
 
 		}

@@ -14,6 +14,7 @@ public class Reference {
     public static boolean SNEAKPUSHFLAG = false;
     public static boolean SONICFLAG = false;
     public static boolean BIGFLAG = false;
+    public static boolean GRAPPFLAG =false;
 
     public static float size = 0.9375F;
     public static float EYEHEIGH = 2.0f;

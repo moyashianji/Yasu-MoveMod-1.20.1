@@ -1,0 +1,7 @@
+{
+  "parent": "yasu:custom/fukku",
+  "textures": {
+    "0": "yasu:block/gukku",
+    "particle": "yasu:item/gukku"
+  }
+}

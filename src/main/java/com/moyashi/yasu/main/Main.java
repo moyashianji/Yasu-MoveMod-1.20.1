@@ -6,6 +6,9 @@ import com.moyashi.yasu.bigportion.init.BigModMobEffects;
 import com.moyashi.yasu.bigportion.init.BigModPotions;
 import com.moyashi.yasu.config.ConfigReload;
 import com.moyashi.yasu.event.*;
+import com.moyashi.yasu.grappling.entity.GrapplingHookEntity;
+import com.moyashi.yasu.grappling.init.GrapplingModEntities;
+import com.moyashi.yasu.grappling.init.GrapplingModItems;
 import com.moyashi.yasu.hud.TextHUD;
 import com.moyashi.yasu.init.IroiroModBlocks;
 import com.moyashi.yasu.init.IroiroModItems;
@@ -96,6 +99,9 @@ public class Main {
         PorrrModItems.REGISTRY.register(bus);
         EnergydrinkItem.register();
         OmegapotionItem.register();
+        GrapplingModItems.REGISTRY.register(bus);
+        GrapplingModEntities.REGISTRY.register(bus);
+        GrapplingHookEntity.register();
         bus.addListener(this::onClientSetup);
     }
 

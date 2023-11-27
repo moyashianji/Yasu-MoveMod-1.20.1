@@ -30,6 +30,8 @@
   "item.minecraft.potion.effect.energy_drink": "超エナジードリンク",
   "effect.yasu.bigportion": "オメガポーション",
   "effect.big.big": "オメガポーション",
-  "effect.big.energy_drink_effect": "超エナジードリンク"
+  "effect.big.energy_drink_effect": "超エナジードリンク",
 
+  "item.yasu.grappling_hook": "グラッピングガン",
+  "item.yasu.grappling": "弾"
 }

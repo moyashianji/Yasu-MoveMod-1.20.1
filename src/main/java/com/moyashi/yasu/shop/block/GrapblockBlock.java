@@ -2,6 +2,7 @@
 package com.moyashi.yasu.shop.block;
 
 import com.moyashi.yasu.config.MoneyLoad;
+import com.moyashi.yasu.grappling.init.GrapplingModItems;
 import com.moyashi.yasu.init.IroiroModItems;
 import com.moyashi.yasu.shop.init.ShopModBlocks;
 import net.minecraft.nbt.CompoundTag;
@@ -112,6 +113,10 @@ public class GrapblockBlock extends Block implements SimpleWaterloggedBlock {
 				System.out.println("grappp");
 				MoneyLoad.Money -= 15000;
 				onSave();
+
+				ItemStack _setstack = new ItemStack(GrapplingModItems.GRAPPLING_HOOK.get());
+				_setstack.setCount(1);
+				ItemHandlerHelper.giveItemToPlayer(entity, _setstack);
 				/**ItemStack modItem = ForgeRegistries.ITEMS.getValue(new ResourceLocation("grapplemod:grapplinghook")).getDefaultInstance();
 				// アイテムに NBT タグがない場合は作成し、取得
 				CompoundTag compoundTag = modItem.getOrCreateTag();
